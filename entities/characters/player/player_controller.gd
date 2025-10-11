@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 @export var speed: float = 5 # Walking speed
 @export var acceleration: float = 100 # Walking acceleration
+@export var jump_height: float = 1 # Jumping height
 
 @onready var camera : Camera3D = $Camera # Camera node
 
@@ -29,8 +30,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			_rotate_camera(dir)
 
 func _physics_process(delta: float) -> void:
+	# Handle jumps
+	var jumping: bool
+	if Input.is_action_just_pressed(&"jump"):
+		jumping = true
 	# Add up all computed velocity and move
-	velocity = _walk(delta) + _gravity(delta)
+	velocity = _walk(delta) + _gravity(delta) + _jump(delta, jumping)
 	move_and_slide()
 
 
@@ -59,3 +64,17 @@ func _gravity(delta: float) -> Vector3:
 	else:
 		grav_vel = grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)
 	return grav_vel
+
+# Handle jump velocity
+func _jump(delta: float, jumping: bool) -> Vector3:
+	if jumping:
+		# Only give jump impulse if on the floor
+		if is_on_floor():
+			jump_vel = Vector3(0, sqrt(2 * jump_height * gravity), 0)
+		return jump_vel
+	if is_on_floor() or is_on_ceiling_only():
+		jump_vel = Vector3.ZERO
+	else:
+		jump_vel = jump_vel.move_toward(Vector3.ZERO, gravity * delta)
+	return jump_vel
+
