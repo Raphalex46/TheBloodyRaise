@@ -7,7 +7,7 @@ extends CharacterBody3D
 # CC0-1.0 license.
 
 @export var speed: float = 5 # Walking speed
-@export var acceleration: float = 100 # Walking acceleration
+@export var acceleration: float = 40 # Walking acceleration
 @export var jump_height: float = 1 # Jumping height
 
 @onready var camera : Camera3D = $Camera # Camera node
