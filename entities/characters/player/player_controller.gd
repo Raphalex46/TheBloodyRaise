@@ -6,10 +6,12 @@ extends CharacterBody3D
 # (https://github.com/rbarongr/GodotFirstPersonController) which is under the
 # CC0-1.0 license.
 
+@export var speed: float = 10 # Walking speed
+@export var acceleration: float = 100 # Walking acceleration
+
 @onready var camera : Camera3D = $Camera # Camera node
 
-@export var speed: float = 10
-@export var acceleration: float = 100
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var walk_vel: Vector3 # Walking velocity
 var grav_vel: Vector3 # Gravity velocity
@@ -27,7 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_rotate_camera(dir)
 
 func _physics_process(delta: float) -> void:
-	velocity = _walk(delta)
+	# Add up all computed velocity and move
+	velocity = _walk(delta) + _gravity(delta)
 	move_and_slide()
 
 
@@ -49,3 +52,10 @@ func _walk(delta: float) -> Vector3:
 	walk_vel = walk_vel.move_toward(walk_dir * speed, acceleration * delta)
 	return walk_vel
 
+# Handle velocity due to gravity
+func _gravity(delta: float) -> Vector3:
+	if is_on_floor():
+		grav_vel = Vector3.ZERO
+	else:
+		grav_vel = grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)
+	return grav_vel
