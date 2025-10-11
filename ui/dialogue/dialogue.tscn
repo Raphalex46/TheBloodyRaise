@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bov0nxbqsd6o4"]
+
+[ext_resource type="Script" uid="uid://cpfoou4u22eql" path="res://ui/dialogue/dialogue.gd" id="1_8q5o4"]
+[ext_resource type="FontFile" uid="uid://l1pv5jrv71g0" path="res://ui/dialogue/VCR_OSD_MONO.ttf" id="2_h4lfh"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 0.9
+script = ExtResource("1_8q5o4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_h4lfh")
+theme_override_font_sizes/normal_font_size = 20
+text = "This is a sample text"
+
+[node name="Label" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Next"
