@@ -6,7 +6,7 @@ extends CharacterBody3D
 # (https://github.com/rbarongr/GodotFirstPersonController) which is under the
 # CC0-1.0 license.
 
-@export var speed: float = 10 # Walking speed
+@export var speed: float = 5 # Walking speed
 @export var acceleration: float = 100 # Walking acceleration
 
 @onready var camera : Camera3D = $Camera # Camera node
