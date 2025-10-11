@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxusiga1lv2ty"]
+
+[ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jiqs4"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_jiqs4")
+
+[node name="Camera" type="Camera3D" parent="."]
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jiqs4")
