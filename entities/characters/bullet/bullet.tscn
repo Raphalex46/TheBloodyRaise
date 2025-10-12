@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cww3rvibwpxot"]
+
+[ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_wktej"]
+[ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/bullet/bullet.gd" id="2_dw77l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw77l"]
+albedo_color = Color(0.26, 0.26, 0.26, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ofja4"]
+material = SubResource("StandardMaterial3D_dw77l")
+left_to_right = -1.0
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Bullet" type="Sprite3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+billboard = 2
+texture = ExtResource("1_wktej")
+script = ExtResource("2_dw77l")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 4
+explosiveness = 1.0
+mesh = SubResource("PrismMesh_ofja4")
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0

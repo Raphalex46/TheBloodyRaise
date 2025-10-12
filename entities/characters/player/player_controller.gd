@@ -14,7 +14,9 @@ extends CharacterBody3D
 @export var weapon_damage: float = 2 # Weapon damage
 
 @onready var camera : Camera3D = $Camera # Camera node
-@onready var weapon : AnimatedSprite3D = $Camera/Weapon
+@onready var weapon : AnimatedSprite3D = $Camera/Weapon # Weapon node
+
+signal shot_fired(hit_position)
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -63,8 +65,9 @@ func _shoot():
 
 	# Cast ray and interpret result
 	var result = space_state.intersect_ray(query)
+	if result.has(&"position"):
+		shot_fired.emit(result.position)
 	if result.has(&"collider"):
-		print(result.collider)
 		if result.collider.has_method(&"take_damage"):
 			result.collider.take_damage(weapon_damage)
 
