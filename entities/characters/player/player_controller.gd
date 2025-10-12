@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var jump_height: float = 1 # Jumping height
 
 @onready var camera : Camera3D = $Camera # Camera node
+@onready var weapon : AnimatedSprite3D = $Camera/Weapon
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -30,6 +31,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			_rotate_camera(dir)
 
 func _physics_process(delta: float) -> void:
+	# Handle shoots
+	if Input.is_action_just_pressed(&"jump"):
+		weapon.play(&"shooting")
 	# Handle jumps
 	var jumping: bool
 	if Input.is_action_just_pressed(&"jump"):
@@ -77,4 +81,3 @@ func _jump(delta: float, jumping: bool) -> Vector3:
 	else:
 		jump_vel = jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
-
