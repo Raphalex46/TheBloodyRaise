@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cww3rvibwpxot"]
+
+[ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_wktej"]
+[ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/bullet/bullet.gd" id="2_dw77l"]
+
+[node name="Bullet" type="Sprite3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+billboard = 2
+texture = ExtResource("1_wktej")
+script = ExtResource("2_dw77l")
