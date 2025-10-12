@@ -12,7 +12,7 @@ signal dialogue_finished # Signal sent when the player advances the dialogue
 
 @onready var time_char_interval: float = 1/char_per_sec # Amount of time it takes to display a character
 
-var elapsed_time: float = 0 # Time counter for displaying characters
+var elapsed_character_time: float = 0 # Time counter for displaying characters
 var elapsed_blink_time: float = 0 # Same kind of counter but for blinking the prompt
 var content_length: int = 0 # Length of the content
 var display: bool = false # Enables or disables this node's logic
@@ -42,10 +42,10 @@ func _update_display(delta: float):
 # Advance the elapsed time counter, display characters and play the sound
 # effect
 func _update_displayed_chars(delta: float) -> void:
-	elapsed_time += delta
-	while elapsed_time >= time_char_interval:
+	elapsed_character_time += delta
+	while elapsed_character_time >= time_char_interval:
 		text_label.visible_characters += 1
-		elapsed_time -= time_char_interval
+		elapsed_character_time -= time_char_interval
 		if text_label.text[text_label.visible_characters] != "":
 			sound_effect.pitch_scale = randf_range(0.7, 0.9)
 			sound_effect.play()
@@ -56,7 +56,7 @@ func _update_displayed_chars(delta: float) -> void:
 func _reset_text_label() -> void:
 	text_label.visible_characters = 0
 	content_length = 0
-	elapsed_time = 0
+	elapsed_character_time = 0
 	display = false
 
 # Just blink the prompt at the specified frequency
