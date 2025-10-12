@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bov0nxbqsd6o4"]
+
+[ext_resource type="Script" uid="uid://cpfoou4u22eql" path="res://ui/dialogue/dialogue.gd" id="1_8q5o4"]
+[ext_resource type="FontFile" uid="uid://l1pv5jrv71g0" path="res://ui/dialogue/VCR_OSD_MONO.ttf" id="2_h4lfh"]
+[ext_resource type="AudioStream" uid="uid://dgn7vtd13k2ot" path="res://ui/dialogue/sound_effect.wav" id="3_m4qfh"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8q5o4")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_h4lfh")
+theme_override_font_sizes/normal_font_size = 20
+scroll_active = false
+scroll_following_visible_characters = true
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m4qfh")
+mix_target = 1
+max_polyphony = 5
