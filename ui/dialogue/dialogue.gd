@@ -10,6 +10,8 @@ signal dialogue_finished # Signal sent when the player advances the dialogue
 @onready var text_label: RichTextLabel = $Panel/RichTextLabel # Main text
 @onready var sound_effect: AudioStreamPlayer = $SoundEffect # Sound effect node
 
+@onready var dialogue_controller: Node = $"/root/DialogueController"
+
 @onready var time_char_interval: float = 1/char_per_sec # Amount of time it takes to display a character
 
 var elapsed_character_time: float = 0 # Time counter for displaying characters
@@ -20,7 +22,7 @@ var finished: bool = false # Whether the text has finished displaying
 
 func _ready() -> void:
 	_reset_text_label()
-	display_dialogue(text_label.text)
+	dialogue_controller.register_ui_dialogue(self)
 
 func _process(delta: float) -> void:
 	if display:

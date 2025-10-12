@@ -15,6 +15,10 @@ run/main_scene="uid://dxusiga1lv2ty"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DialogueController="*res://autoloads/dialogue_controller/dialogue_controller.tscn"
+
 [input]
 
 move_left={
