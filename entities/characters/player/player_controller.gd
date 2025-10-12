@@ -10,6 +10,9 @@ extends CharacterBody3D
 @export var acceleration: float = 40 # Walking acceleration
 @export var jump_height: float = 1 # Jumping height
 
+@export var weapon_range: float = 1000 # Weapon range
+@export var weapon_damage: float = 2 # Weapon damage
+
 @onready var camera : Camera3D = $Camera # Camera node
 @onready var weapon : AnimatedSprite3D = $Camera/Weapon
 
@@ -32,8 +35,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Handle shoots
-	if Input.is_action_just_pressed(&"jump"):
-		weapon.play(&"shooting")
+	if Input.is_action_just_pressed(&"shoot"):
+		_shoot()
 	# Handle jumps
 	var jumping: bool
 	if Input.is_action_just_pressed(&"jump"):
@@ -42,6 +45,28 @@ func _physics_process(delta: float) -> void:
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta, jumping)
 	move_and_slide()
 
+# Cast a shooting ray
+func _shoot():
+	# Play shooting animation
+	weapon.play(&"shooting")
+	
+	# Get ray origin
+	var space_state = get_world_3d().direct_space_state
+	var mousepos= get_viewport().get_mouse_position()
+	var origin = camera.project_ray_origin(mousepos)
+	
+	# Compute ray end and query
+	var end = origin + camera.project_ray_normal(mousepos) * weapon_range
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_areas = true
+	query.exclude = [self]
+
+	# Cast ray and interpret result
+	var result = space_state.intersect_ray(query)
+	if result.has(&"collider"):
+		print(result.collider)
+		if result.collider.has_method(&"take_damage"):
+			result.collider.take_damage(weapon_damage)
 
 # Rotate the camera given a 2D vector of mouse motion
 func _rotate_camera(dir: Vector2) -> void:
