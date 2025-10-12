@@ -65,9 +65,7 @@ func _shoot():
 
 	# Cast ray and interpret result
 	var result = space_state.intersect_ray(query)
-	print(result)
 	if result.has(&"position"):
-		print(result.position)
 		shot_fired.emit(result.position)
 	if result.has(&"collider"):
 		if result.collider.has_method(&"take_damage"):
