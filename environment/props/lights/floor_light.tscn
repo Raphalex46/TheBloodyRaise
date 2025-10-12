@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=4 uid="uid://c3kyxacvfsf5n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdhsq"]
+albedo_color = Color(0, 0.54509807, 0.33333334, 1)
+emission_enabled = true
+emission = Color(0, 0.54509807, 0.33333334, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jdhsq"]
+_surfaces = [{
+"aabb": AABB(-0.25, -0.005, -0.25, 0.5, 0.01, 0.5),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_jdhsq"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AACAvgrXo7sAAIA+AACAvgrXo7sAAIC+AACAvgrXozsAAIC+AACAPgrXo7sAAIC+AACAvgrXo7sAAIC+AACAvgrXo7sAAIA+AACAvgrXozsAAIC+AACAvgrXo7sAAIC+AACAPgrXo7sAAIC+AACAvgrXozsAAIC+AACAvgrXozsAAIA+AACAvgrXo7sAAIA+AACAvgrXo7sAAIA+AACAvgrXozsAAIA+AACAPgrXozsAAIA+AACAPgrXozsAAIA+AACAvgrXozsAAIA+AACAvgrXozsAAIC+AACAvgrXo7sAAIA+AACAPgrXo7sAAIA+AACAPgrXo7sAAIC+AACAPgrXozsAAIA+AACAPgrXo7sAAIA+AACAvgrXo7sAAIA+AACAPgrXo7sAAIC+AACAPgrXo7sAAIA+AACAPgrXozsAAIA+AACAPgrXo7sAAIC+AACAPgrXozsAAIC+AACAvgrXozsAAIC+AACAvgrXozsAAIC+AACAPgrXozsAAIC+AACAPgrXozsAAIA+AACAPgrXozsAAIA+AACAPgrXozsAAIC+AACAPgrXo7sAAIC+AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[node name="FloorLight" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.10371268, 0)
+light_color = Color(1.1310726e-06, 0.5469269, 0.33509085, 1)
+light_energy = 2.0
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_jdhsq")
