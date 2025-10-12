@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cww3rvibwpxot"]
 
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_wktej"]
-[ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/bullet/bullet.gd" id="2_dw77l"]
+[ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/bullet/bullet.gd" id="2_dw77l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw77l"]
 albedo_color = Color(0.26, 0.26, 0.26, 1)

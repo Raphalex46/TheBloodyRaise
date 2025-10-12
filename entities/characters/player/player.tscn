@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=9 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://eejnph325i1x" path="res://entities/characters/player/TEMP_weapon.png" id="2_eoic6"]
 [ext_resource type="Script" uid="uid://byog5p8b60qqe" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
+[ext_resource type="PackedScene" uid="uid://cww3rvibwpxot" path="res://entities/bullet/bullet.tscn" id="4_wqnow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrd5i"]
 atlas = ExtResource("2_eoic6")
@@ -52,7 +53,13 @@ sprite_frames = SubResource("SpriteFrames_jiqs4")
 animation = &"shooting"
 script = ExtResource("3_qrd5i")
 
+[node name="Bullet" parent="Camera/Weapon" instance=ExtResource("4_wqnow")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.21207365, -0.49287897)
+top_level = true
+visible = false
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jiqs4")
 
+[connection signal="shot_fired" from="." to="Camera/Weapon/Bullet" method="_on_player_shot_fired"]
 [connection signal="animation_finished" from="Camera/Weapon" to="Camera/Weapon" method="_on_animation_finished"]
