@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2xa5fv2d3387"]
+
+[ext_resource type="PackedScene" uid="uid://dxusiga1lv2ty" path="res://entities/characters/player/player.tscn" id="1_xa5uh"]
+[ext_resource type="Texture2D" uid="uid://2nca360gya84" path="res://test_scenes/player_boss/EXT_floor_1.png" id="2_j7ufh"]
+[ext_resource type="Texture2D" uid="uid://v0bpnjn1t5wc" path="res://test_scenes/player_boss/EXT_wall_6.png" id="3_cn1x4"]
+[ext_resource type="PackedScene" uid="uid://bngn2d8kyo3lx" path="res://entities/characters/boss/boss.tscn" id="4_tr4mv"]
+[ext_resource type="PackedScene" uid="uid://tk0n1i5iben6" path="res://ui/hud/hud.tscn" id="5_41bqd"]
+[ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="6_4hhwn"]
+[ext_resource type="PackedScene" uid="uid://c3kyxacvfsf5n" path="res://environment/props/lights/floor_light.tscn" id="7_agyvp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fprcb"]
+albedo_texture = ExtResource("2_j7ufh")
+uv1_scale = Vector3(4, 4, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5mq6j"]
+data = PackedVector3Array(-0.5, -0.04321289, 0.5, -0.5, -0.04321289, -0.5, -0.5, 0.04321289, -0.5, 0.5, -0.04321289, -0.5, -0.5, -0.04321289, -0.5, -0.5, -0.04321289, 0.5, -0.5, 0.04321289, -0.5, -0.5, -0.04321289, -0.5, 0.5, -0.04321289, -0.5, -0.5, 0.04321289, -0.5, -0.5, 0.04321289, 0.5, -0.5, -0.04321289, 0.5, -0.5, -0.04321289, 0.5, -0.5, 0.04321289, 0.5, 0.5, 0.04321289, 0.5, 0.5, 0.04321289, 0.5, -0.5, 0.04321289, 0.5, -0.5, 0.04321289, -0.5, -0.5, -0.04321289, 0.5, 0.5, -0.04321289, 0.5, 0.5, -0.04321289, -0.5, 0.5, 0.04321289, 0.5, 0.5, -0.04321289, 0.5, -0.5, -0.04321289, 0.5, 0.5, -0.04321289, -0.5, 0.5, -0.04321289, 0.5, 0.5, 0.04321289, 0.5, 0.5, -0.04321289, -0.5, 0.5, 0.04321289, -0.5, -0.5, 0.04321289, -0.5, -0.5, 0.04321289, -0.5, 0.5, 0.04321289, -0.5, 0.5, 0.04321289, 0.5, 0.5, 0.04321289, 0.5, 0.5, 0.04321289, -0.5, 0.5, -0.04321289, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llhd5"]
+albedo_texture = ExtResource("3_cn1x4")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8gada"]
+data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
+
+[node name="PlayerBossTest" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_xa5uh")]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(19.223337, 0, 0, 0, 1, 0, 0, 0, 16.592142, 0, -1.1990333, 0)
+size = Vector3(1, 0.08642578, 1)
+material = SubResource("StandardMaterial3D_fprcb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5mq6j")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall1" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-3.9119746e-14, -4.37115e-08, -19.439123, 20.474195, -4.37115e-08, 0, -8.949555e-07, -1.0000025, 8.4971106e-07, 0, 1.237596, 8.274723)
+size = Vector3(1, 0.08642578, 1)
+material = SubResource("StandardMaterial3D_llhd5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall1"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Walls/Wall1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5mq6j")
+
+[node name="Wall2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-8.949555e-07, -1.0000025, 0, 20.474195, -4.37115e-08, 0, 0, 0, 19.439123, -9.654833, 1.237596, 0.2644825)
+size = Vector3(1, 0.08642578, 1)
+material = SubResource("StandardMaterial3D_llhd5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall2"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5mq6j")
+
+[node name="Wall3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(3.911975e-14, 4.37115e-08, 19.439123, 20.474195, -4.37115e-08, 0, 8.949555e-07, 1.0000025, -8.4971106e-07, -0.17691422, 1.237596, -8.135403)
+size = Vector3(1, 0.08642578, 1)
+material = SubResource("StandardMaterial3D_llhd5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall3"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5mq6j")
+
+[node name="Wall4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(8.949555e-07, 1.0000025, -1.6994221e-06, 20.474195, -4.37115e-08, 0, -7.82395e-14, -8.7423e-08, -19.439123, 9.658261, 1.237596, -0.8979888)
+size = Vector3(1, 0.08642578, 1)
+material = SubResource("StandardMaterial3D_llhd5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall4"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Walls/Wall4/StaticBody3D"]
+transform = Transform3D(1.0000001, -2.2204459e-16, 0, -5.6843412e-14, 0.99999994, 1.1368684e-13, 0, 4.440892e-16, 1.0000002, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_5mq6j")
+
+[node name="Box" type="CSGBox3D" parent="."]
+transform = Transform3D(0.8141155, 0, 0.58070296, 0, 1, 0, -0.58070296, 0, 0.8141155, -2.1111684, -0.45678806, -4.6612096)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8gada")
+
+[node name="Boss" parent="." instance=ExtResource("4_tr4mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3267226, 1.4086034, -0.5028477)
+
+[node name="Hud" parent="." instance=ExtResource("5_41bqd")]
+
+[node name="DialogueHolder" parent="." instance=ExtResource("6_4hhwn")]
+dialogue = Array[String](["This is a little dialogue test", "And it's working!"])
+autoplay = true
+
+[node name="CornerLights" type="Node3D" parent="."]
+
+[node name="FloorLight" parent="CornerLights" instance=ExtResource("7_agyvp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.354607, -1.1, -7.8434453)
+
+[node name="FloorLight2" parent="CornerLights" instance=ExtResource("7_agyvp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.354607, -1.1, 7.987392)
+
+[node name="FloorLight3" parent="CornerLights" instance=ExtResource("7_agyvp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.292789, -1.1, -7.8434453)
+
+[node name="FloorLight4" parent="CornerLights" instance=ExtResource("7_agyvp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.367137, -1.1, 7.985041)

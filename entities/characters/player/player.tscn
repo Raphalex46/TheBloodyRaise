@@ -11,5 +11,9 @@ script = ExtResource("1_jiqs4")
 [node name="Camera" type="Camera3D" parent="."]
 current = true
 
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Camera"]
+light_energy = 2.484
+spot_range = 12.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jiqs4")

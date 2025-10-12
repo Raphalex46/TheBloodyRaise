@@ -7,3 +7,7 @@
 **Fonts**
 
 - VCR_OSD_MONO by mrmanet (https://www.1001freefonts.com/vcr-osd-mono.font)
+
+**Wall and floor textures**
+
+- Modular Retro FPS Kit  by Pizza Doggy (https://pizzadoggy.itch.io/modular-retro-fps-kit)
