@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://tk0n1i5iben6"]
+[gd_scene load_steps=3 format=3 uid="uid://tk0n1i5iben6"]
 
+[ext_resource type="PackedScene" uid="uid://drekkkckj8qlt" path="res://ui/conf_call/conf_call.tscn" id="1_4d6w6"]
 [ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="1_xmswo"]
 
 [node name="HUD" type="Control"]
@@ -10,6 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="ConfCall" parent="." instance=ExtResource("1_4d6w6")]
+layout_mode = 1
 
 [node name="Dialogue" parent="." instance=ExtResource("1_xmswo")]
 layout_mode = 1
