@@ -1,6 +1,6 @@
 extends Control
 
-const contact_names: Array[String] = [
+var contact_names: Array[String] = [
 "Ciara Clary",
 "Lexis Reyes",
 "Jaidyn Tanner",
@@ -110,6 +110,7 @@ var selected_contact: String = ""
 
 func _ready() -> void:
 	call_panel_close_button.pressed.connect(_on_call_panel_close_pressed)
+	contact_names.sort()
 	for n in contact_names:
 		var contact = contact_scene.instantiate()
 		contact_container.add_child(contact)
