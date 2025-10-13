@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c14yvjtgourbe"]
+
+[ext_resource type="Script" uid="uid://bsfqvkfa87cmt" path="res://ui/conf_call/contact/contact.gd" id="1_fa3gt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa3gt"]
+draw_center = false
+corner_detail = 1
+
+[node name="Contact" type="Button"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_fa3gt")
+action_mode = 0
+script = ExtResource("1_fa3gt")

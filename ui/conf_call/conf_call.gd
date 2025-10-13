@@ -1,0 +1,125 @@
+extends Control
+
+const contact_names: Array[String] = [
+"Ciara Clary",
+"Lexis Reyes",
+"Jaidyn Tanner",
+"Shelby Godfrey",
+"Jocelynn Branch",
+"Eliezer Hutchings",
+"Braeden Burden",
+"Matteo Parris",
+"Jacklyn Cronin",
+"Deion Hite",
+"Brant Coffey",
+"Moises Bratcher",
+"Johnson Berger",
+"Ammon Castro",
+"Lamar Christensen",
+"Reese Adam",
+"Donavan Dickey",
+"Samira Dempsey",
+"Marcello Crowder",
+"Luiz Guinn",
+"Alisha South",
+"Vladimir Quinones",
+"Mason Huston",
+"Anton Rowley",
+"Alfonso Hedrick",
+"Slade Harding",
+"Colin Mansfield",
+"Auston Noel",
+"Duncan Douglass",
+"Aimee Diamond",
+"Sarina Whitley",
+"Moses Kuykendall",
+"Annette Belcher",
+"Jadyn Borders",
+"Treyvon Flores",
+"Brookelyn Paine",
+"Cyrus Choate",
+"Jayme Rader",
+"Farrah Nowak",
+"Jarvis Joiner",
+"Makaela Richards",
+"Destinee Cathey",
+"Fred Ulrich",
+"Madisen Douglass",
+"Genesis Bachman",
+"Camron Stern",
+"Delilah Vidal",
+"Samaria Higgins",
+"Sterling Fullerton",
+"Violet Zapata",
+"Armand Lindquist",
+"Taylor Sapp",
+"Marjorie Roberson",
+"Milan Parrish",
+"Gage Whittaker",
+"Tyrek South",
+"Devontae Moriarty",
+"Lewis Olson",
+"Alma Avalos",
+"Perry Moreau",
+"Aaron Culver",
+"Tyra Morin",
+"Jonah Atkins",
+"Kate Toro",
+"Harley Matos",
+"Grace Peck",
+"Bridger Kimbrough",
+"Stephanie Osorio",
+"Aracely Kirsch",
+"Derrick McPherson",
+"Duane Dion",
+"Aria Rinehart",
+"Harlie Kroll",
+"Magaly Rose",
+"Sahara Mitchell",
+"Eva Raines",
+"Theo Ryder",
+"London Voss",
+"Keith Reiter",
+"Kimberly Ferrara",
+"Colby France",
+"Justice Bunch",
+"Anders Moua",
+"Seamus Porras",
+"Britton Waters",
+"Cordell Weaver",
+"Brannon Carranza",
+"Harris Bergman",
+"Shelton Breaux",
+"Nehemiah Gilbert",
+"Ismael Ragan",
+"Roland Kerr",
+"Sommer Weir",
+"Delaney Holly",
+"Berenice Hudson",
+"Kya Locklear",
+"Leonel Sapp"]
+
+
+@onready var contact_container: VBoxContainer = $ContactList/ScrollContainer/VBoxContainer
+@onready var call_panel: Panel = $CallPanel
+@onready var call_panel_label: Label = $CallPanel/Label
+@onready var call_panel_close_button: Button = $CallPanel/CloseButton
+
+var contact_scene = preload("./contact/contact.tscn")
+var selected_contact: String = ""
+
+func _ready() -> void:
+	call_panel_close_button.pressed.connect(_on_call_panel_close_pressed)
+	for n in contact_names:
+		var contact = contact_scene.instantiate()
+		contact_container.add_child(contact)
+		contact.set_contact_name(n)
+		contact.contact_pressed.connect(_on_contact_pressed)
+
+func _on_contact_pressed(contact_name: String) -> void:
+		call_panel.show()
+		call_panel_label.text = contact_name
+		selected_contact = contact_name
+
+func _on_call_panel_close_pressed() -> void:
+	call_panel.hide()

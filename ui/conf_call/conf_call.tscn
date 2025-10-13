@@ -1,0 +1,180 @@
+[gd_scene load_steps=5 format=3 uid="uid://drekkkckj8qlt"]
+
+[ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
+[ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_gtwgn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
+bg_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lumt"]
+bg_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.35906902, 0.35906914, 0.35906887, 1)
+
+[node name="ConfCall" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0lumt")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_12ymn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ConfCamera" type="TextureRect" parent="."]
+self_modulate = Color(1, 0.30980393, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gtwgn")
+
+[node name="CallPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 0.30980393, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.12
+anchor_right = 0.68
+anchor_bottom = 0.48
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CallPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.6
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="CallPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.359985
+offset_bottom = 52.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="CallPanel/CloseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gtwgn")
+expand_mode = 1
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.6
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_bottom = -6.1035156e-05
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Buttons/HBoxContainer"]
+self_modulate = Color(7.4602663e-06, 0.85770947, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_gtwgn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Buttons/HBoxContainer"]
+self_modulate = Color(7.4602663e-06, 0.85770947, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_gtwgn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Buttons/HBoxContainer"]
+self_modulate = Color(0.9756643, 5.6072327e-06, 2.117753e-06, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_gtwgn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ContactList" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0lumt")
+
+[node name="Label" type="Label" parent="ContactList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Contact List"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ContactList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContactList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
