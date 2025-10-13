@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dxusiga1lv2ty" path="res://entities/characters/player/player.tscn" id="1_7b2vw"]
 [ext_resource type="PackedScene" uid="uid://bngn2d8kyo3lx" path="res://entities/characters/boss/boss.tscn" id="2_t62pw"]
-[ext_resource type="PackedScene" uid="uid://tk0n1i5iben6" path="res://ui/hud/hud.tscn" id="3_jjpcp"]
 [ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="4_lcwxe"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5mq6j"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=12 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://eejnph325i1x" path="res://entities/characters/player/TEMP_weapon.png" id="2_eoic6"]
 [ext_resource type="Script" uid="uid://byog5p8b60qqe" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
+[ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="4_lbevp"]
+[ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrd5i"]
 atlas = ExtResource("2_eoic6")
@@ -40,6 +42,14 @@ animations = [{
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jiqs4"]
 radius = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3s12"]
+albedo_color = Color(0.26, 0.26, 0.26, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_qrd5i"]
+material = SubResource("StandardMaterial3D_a3s12")
+left_to_right = -1.0
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_jiqs4")
 
@@ -55,4 +65,22 @@ script = ExtResource("3_qrd5i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jiqs4")
 
+[node name="Bullet" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+top_level = true
+visible = false
+billboard = 2
+texture = ExtResource("4_lbevp")
+script = ExtResource("4_wqnow")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Bullet"]
+amount = 4
+explosiveness = 1.0
+mesh = SubResource("PrismMesh_qrd5i")
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+
+[connection signal="shot_fired" from="." to="Bullet" method="_on_player_shot_fired"]
 [connection signal="animation_finished" from="Camera/Weapon" to="Camera/Weapon" method="_on_animation_finished"]
