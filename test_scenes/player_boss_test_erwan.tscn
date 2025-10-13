@@ -43,3 +43,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3267226, 1.4086034, -0.502
 [node name="DialogueHolder" parent="." instance=ExtResource("3_8sjbx")]
 dialogue = Array[String](["This is a little dialogue test", "And it's working!"])
 autoplay = true
+
+[connection signal="presence_declared" from="Player" to="Boss" method="_on_player_presence_declared"]

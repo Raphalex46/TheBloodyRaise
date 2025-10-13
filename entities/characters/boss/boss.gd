@@ -1,0 +1,32 @@
+extends CharacterBody3D
+
+@export var speed: float = 5 # Walking speed
+@export var acceleration: float = 2 # Walking acceleration
+
+@export var health: float = 10 # Boss life
+
+var target: Node3D = null # Target to chase
+
+var walk_vel: Vector3 # Walking velocity
+
+# Allows the boss to take damage
+func take_damage(dmg: float) -> void:
+	health -= dmg
+	if health <= 0:
+		# Might be a little harsh but an easy way out
+		queue_free()
+
+func _physics_process(delta: float) -> void:
+	# If target locked in
+	if target != null:
+		velocity = _chase(delta, target.global_position)
+	move_and_slide()
+
+# Handle chasing movement
+func _chase(delta: float, target_position: Vector3) -> Vector3:
+	var walk_dir: Vector3 = global_position.direction_to(target_position).normalized()
+	walk_vel = walk_vel.move_toward(walk_dir * speed, acceleration * delta)
+	return walk_vel
+
+func _on_player_presence_declared(node: Variant) -> void:
+	target = node

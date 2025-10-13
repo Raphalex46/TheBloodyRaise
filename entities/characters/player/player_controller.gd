@@ -17,6 +17,7 @@ extends CharacterBody3D
 @onready var weapon : AnimatedSprite3D = $Camera/Weapon # Weapon node
 
 signal shot_fired(hit_position)
+signal presence_declared(node)
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -27,6 +28,9 @@ var jump_vel: Vector3 # Jumping velocity
 func _ready() -> void:
 	# Capture the mouse for FPS movements
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# TEMP: Signal his presence to everybody
+	presence_declared.emit(self)
 
 # Handle mouse motion inputs
 func _unhandled_input(event: InputEvent) -> void:
