@@ -101,9 +101,9 @@ var contact_names: Array[String] = [
 
 
 @onready var contact_container: VBoxContainer = $ContactList/ScrollContainer/VBoxContainer
-@onready var call_panel: Panel = $CallPanel
-@onready var call_panel_label: Label = $CallPanel/Label
-@onready var call_panel_close_button: Button = $CallPanel/CloseButton
+@onready var call_panel: Panel = $ConfCameraPanel/CallPanel
+@onready var call_panel_label: Label = $ConfCameraPanel/CallPanel/Label
+@onready var call_panel_close_button: Button = $ConfCameraPanel/CallPanel/CloseButton
 
 var contact_scene = preload("./contact/contact.tscn")
 var selected_contact: String = ""

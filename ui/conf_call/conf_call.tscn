@@ -1,18 +1,90 @@
-[gd_scene load_steps=5 format=3 uid="uid://drekkkckj8qlt"]
+[gd_scene load_steps=12 format=3 uid="uid://drekkkckj8qlt"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_gtwgn"]
+[ext_resource type="Texture2D" uid="uid://ds3dnmswk7m7c" path="res://ui/conf_call/TEMP_boss.png" id="2_12ymn"]
+[ext_resource type="Texture2D" uid="uid://doqo501vrp0bj" path="res://ui/conf_call/TEMP_buttons.png" id="4_eya8e"]
+[ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
-bg_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+bg_color = Color(0.16078432, 0.15686275, 0.18039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eya8e"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(3.3691526e-07, 0.509808, 0.25591245, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lumt"]
-bg_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.35906902, 0.35906914, 0.35906887, 1)
+bg_color = Color(0.23137255, 0.22352941, 0.27058825, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="Animation" id="Animation_0lumt"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_12ymn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_12ymn"]
+_data = {
+&"FadeIn": SubResource("Animation_0lumt"),
+&"RESET": SubResource("Animation_12ymn")
+}
 
 [node name="ConfCall" type="Control"]
 layout_mode = 3
@@ -34,39 +106,63 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_12ymn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ConfCamera" type="TextureRect" parent="."]
-self_modulate = Color(1, 0.30980393, 1, 1)
+[node name="ConfCameraPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
+anchor_left = 0.25
 anchor_top = 0.1
-anchor_right = 0.7
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_right = 0.95
+anchor_bottom = 0.7
+theme_override_styles/panel = SubResource("StyleBoxFlat_eya8e")
+
+[node name="ConfCamera" type="TextureRect" parent="ConfCameraPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_gtwgn")
+texture = ExtResource("2_12ymn")
+expand_mode = 1
 
-[node name="CallPanel" type="Panel" parent="."]
+[node name="Buttons" type="Control" parent="ConfCameraPanel"]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.8
+anchor_right = 0.7
+anchor_bottom = 0.98
+offset_left = 3.0517578e-05
+offset_top = 3.0517578e-05
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_eya8e")
+
+[node name="CallPanel" type="Panel" parent="ConfCameraPanel"]
 visible = false
 self_modulate = Color(1, 0.30980393, 1, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.32
-anchor_top = 0.12
-anchor_right = 0.68
-anchor_bottom = 0.48
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CallPanel"]
+[node name="Label" type="Label" parent="ConfCameraPanel/CallPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -80,7 +176,7 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseButton" type="Button" parent="CallPanel"]
+[node name="CloseButton" type="Button" parent="ConfCameraPanel/CallPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -89,7 +185,7 @@ offset_left = -52.359985
 offset_bottom = 52.0
 grow_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="CallPanel/CloseButton"]
+[node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/CallPanel/CloseButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,65 +195,33 @@ grow_vertical = 2
 texture = ExtResource("1_gtwgn")
 expand_mode = 1
 
-[node name="Buttons" type="Control" parent="."]
+[node name="ContactList" type="Panel" parent="."]
 layout_mode = 1
-anchor_left = 0.3
-anchor_top = 0.6
-anchor_right = 0.7
-anchor_bottom = 0.7
-offset_bottom = -6.1035156e-05
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.1
+anchor_right = 0.23
+anchor_bottom = 0.98
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0lumt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+[node name="TitlePanel" type="Panel" parent="ContactList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.02
+anchor_right = 0.95
+anchor_bottom = 0.1
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="ContactList/TitlePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Buttons/HBoxContainer"]
-self_modulate = Color(7.4602663e-06, 0.85770947, 0, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_gtwgn")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="Buttons/HBoxContainer"]
-self_modulate = Color(7.4602663e-06, 0.85770947, 0, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_gtwgn")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="Buttons/HBoxContainer"]
-self_modulate = Color(0.9756643, 5.6072327e-06, 2.117753e-06, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_gtwgn")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="ContactList" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.2
-anchor_bottom = 1.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0lumt")
-
-[node name="Label" type="Label" parent="ContactList"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 50.0
-grow_horizontal = 2
-text = "Contact List"
+text = "Contacts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -178,3 +242,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_12ymn")
+}
+
+[node name="Dialogue" parent="." instance=ExtResource("5_yi3jc")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.72
+anchor_right = 0.95
+anchor_bottom = 0.95

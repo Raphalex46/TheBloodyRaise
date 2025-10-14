@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueController="*res://autoloads/dialogue_controller/dialogue_controller.tscn"
-HUD="*res://ui/hud/hud.tscn"
 
 [input]
 
