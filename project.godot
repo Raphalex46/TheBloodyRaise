@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SaveCookieController="*res://autoloads/save_cookie_controller/save_cookie_Controller.tscn"
+SaveCookieController="*res://autoloads/save_cookie_controller/save_cookie_controller.tscn"
 
 [input]
 
