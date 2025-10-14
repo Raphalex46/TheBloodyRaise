@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var speed: float = 5 # Walking speed
 @export var acceleration: float = 2 # Walking acceleration
 
-@export var health: float = 10 # Boss life
+@export var health: int = 10 # Boss life
 
 var target: Node3D = null # Target to chase
 var _fireball_available: bool = true
@@ -11,7 +11,7 @@ var _fireball_available: bool = true
 var walk_vel: Vector3 # Walking velocity
 
 # Allows the boss to take damage
-func take_damage(dmg: float) -> void:
+func take_damage(dmg: int) -> void:
 	health -= dmg
 	if health <= 0:
 		# Might be a little harsh but an easy way out

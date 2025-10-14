@@ -10,8 +10,10 @@ extends CharacterBody3D
 @export var acceleration: float = 40 # Walking acceleration
 @export var jump_height: float = 1 # Jumping height
 
+@export var health: int = 10 # Player life total
+
 @export var weapon_range: float = 1000 # Weapon range
-@export var weapon_damage: float = 2 # Weapon damage
+@export var weapon_damage: int = 2 # Weapon damage
 
 @onready var camera : Camera3D = $Camera # Camera node
 @onready var weapon : AnimatedSprite3D = $Camera/Weapon # Weapon node
@@ -74,6 +76,13 @@ func _shoot():
 	if result.has(&"collider"):
 		if result.collider.has_method(&"take_damage"):
 			result.collider.take_damage(weapon_damage)
+
+# Allows the player to take damage
+func take_damage(damage: int):
+	health -= damage
+	print(health)
+	if health <= 0:
+		queue_free() # TEMPORARY !!!
 
 # Rotate the camera given a 2D vector of mouse motion
 func _rotate_camera(dir: Vector2) -> void:

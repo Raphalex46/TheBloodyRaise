@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c54isb5yn42fd"]
+[gd_scene load_steps=6 format=3 uid="uid://c54isb5yn42fd"]
 
 [ext_resource type="Script" uid="uid://cvianqy5atxfb" path="res://entities/characters/boss/fireball/fireball.gd" id="1_6fng2"]
 [ext_resource type="Texture2D" uid="uid://cvm8lxocdg42o" path="res://entities/characters/boss/fireball/TEMP_fireball.png" id="1_fvgry"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6fng2"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fng2"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6fng2"]
+material = SubResource("StandardMaterial3D_6fng2")
+radius = 0.05
+height = 0.05
 
 [node name="Fireball" type="Area3D"]
 script = ExtResource("1_6fng2")
@@ -20,6 +28,18 @@ shape = SubResource("BoxShape3D_6fng2")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+lifetime = 0.25
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_6fng2")
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 7.5
+initial_velocity_max = 7.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

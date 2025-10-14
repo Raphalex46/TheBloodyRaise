@@ -2,7 +2,8 @@ extends Area3D
 
 @export var speed: float = 5
 @export var acceleration: float = 5
-@export var damage: float = 2
+
+@export var damage: int = 0
 
 # Signal that the fireball has done its course
 signal fireball_out
