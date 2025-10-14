@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="ScreamJam2025"
-run/main_scene="uid://dxusiga1lv2ty"
+run/main_scene="uid://ba8vji4wkg3we"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+SaveCookieController="*res://autoloads/save_cookie_controller/save_cookie_controller.tscn"
 DialogueController="*res://autoloads/dialogue_controller/dialogue_controller.tscn"
 Hud="*res://ui/hud/hud.tscn"
 

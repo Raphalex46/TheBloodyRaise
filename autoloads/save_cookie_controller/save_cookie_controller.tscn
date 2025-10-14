@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bewfd0mob3qvd"]
+
+[ext_resource type="Script" uid="uid://cgipyrrmdxcqa" path="res://autoloads/save_cookie_controller/save_cookie_controller.gd" id="1_xeg70"]
+
+[node name="SaveCookieController" type="Node"]
+script = ExtResource("1_xeg70")
