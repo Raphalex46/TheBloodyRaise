@@ -4,13 +4,13 @@ extends Control
 
 @export var char_per_sec: float = 10 # Number of characters to display per second
 @export var prompt: String = " >" # A simple prompt to display once text is done displaying
+@export var disabled: bool = false
 @onready var prompt_len: int = prompt.length() # Length of the prompt
 @export var prompt_blink_freq: float = 0.5 # Blink the prompt once every x seconds
 
-signal dialogue_finished # Signal sent when the player advances the dialogue
-
 @onready var text_label: RichTextLabel = $Panel/RichTextLabel # Main text
 @onready var sound_effect: AudioStreamPlayer = $SoundEffect # Sound effect node
+@onready var dialogue_controller: Node = $"/root/DialogueController"
 
 @onready var time_char_interval: float = 1/char_per_sec # Amount of time it takes to display a character
 
@@ -22,6 +22,7 @@ var finished: bool = false # Whether the text has finished displaying
 
 func _ready() -> void:
 	_reset_text_label()
+	dialogue_controller.play_dialogue.connect(display_dialogue)
 
 func _process(delta: float) -> void:
 	if display:
@@ -36,7 +37,7 @@ func _update_display(delta: float):
 		# signal when the user advances dialogue
 		if Input.is_action_just_pressed(&"advance_dialogue"):
 			_reset_text_label()
-			emit_signal("dialogue_finished")
+			dialogue_controller.dialogue_finished()
 		# If text is done displaying, just blink the prompt
 		_blink_prompt(delta)
 
@@ -73,7 +74,8 @@ func _blink_prompt(delta: float):
 
 # Public function to display dialogue
 func display_dialogue(content: String) -> void:
-	text_label.text = content + prompt
-	content_length = content.length()
-	display = true
-	finished = false
+	if not disabled:
+		text_label.text = content + prompt
+		content_length = content.length()
+		display = true
+		finished = false

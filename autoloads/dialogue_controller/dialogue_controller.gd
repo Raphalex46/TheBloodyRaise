@@ -3,21 +3,20 @@ extends Node
 # A global dialogue controller that can be called from anywhere
 # forward dialogue to a display UI
 
-@onready var ui_dialogue: UIDialogue = $"/root/HUD/Dialogue" # Node to use for displaying dialogue
+signal play_dialogue(String)
+signal queue_finished()
 
 var dialogue_queue: Array[String] # A queue of dialogue lines
 var play_count: int = 0 # Number of dialogue lines to play
 
-func _ready() -> void:
-	ui_dialogue.dialogue_finished.connect(_on_dialogue_finished)
-
-# Forward the provided dialogue to the controller
+# Send signal for the dialogue
 func _play_dialogue(text: String):
-	ui_dialogue.display_dialogue(text)
+	emit_signal(&"play_dialogue", text)
 
-# Signal handler for when dialogue is done displaying
-func _on_dialogue_finished() -> void:
+# Function to be called by the UI when dialogue is finished
+func dialogue_finished() -> void:
 	if dialogue_queue.is_empty() or play_count == 0:
+		emit_signal(&"queue_finished")
 		return
 	else:
 		_play_dialogue(dialogue_queue.pop_front())
