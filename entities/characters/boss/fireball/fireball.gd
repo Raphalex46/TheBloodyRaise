@@ -35,7 +35,6 @@ func _reset():
 func _on_body_entered(body: Node3D) -> void:
 	if _launched and body != get_parent():
 		# If the body takes damage, make it
-		print(body)
 		if body.has_method(&"take_damage"):
 			body.take_damage(damage)
 		_reset()

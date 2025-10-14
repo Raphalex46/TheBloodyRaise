@@ -80,7 +80,6 @@ func _shoot():
 # Allows the player to take damage
 func take_damage(damage: int):
 	health -= damage
-	print(health)
 	if health <= 0:
 		queue_free() # TEMPORARY !!!
 
