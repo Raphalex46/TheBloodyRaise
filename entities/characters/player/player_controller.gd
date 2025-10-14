@@ -10,13 +10,16 @@ extends CharacterBody3D
 @export var acceleration: float = 40 # Walking acceleration
 @export var jump_height: float = 1 # Jumping height
 
+@export var health: int = 10 # Player life total
+
 @export var weapon_range: float = 1000 # Weapon range
-@export var weapon_damage: float = 2 # Weapon damage
+@export var weapon_damage: int = 2 # Weapon damage
 
 @onready var camera : Camera3D = $Camera # Camera node
 @onready var weapon : AnimatedSprite3D = $Camera/Weapon # Weapon node
 
 signal shot_fired(hit_position)
+signal presence_declared(node)
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -27,6 +30,9 @@ var jump_vel: Vector3 # Jumping velocity
 func _ready() -> void:
 	# Capture the mouse for FPS movements
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# TEMP: Signal his presence to everybody
+	presence_declared.emit(self)
 
 # Handle mouse motion inputs
 func _unhandled_input(event: InputEvent) -> void:
@@ -70,6 +76,12 @@ func _shoot():
 	if result.has(&"collider"):
 		if result.collider.has_method(&"take_damage"):
 			result.collider.take_damage(weapon_damage)
+
+# Allows the player to take damage
+func take_damage(damage: int):
+	health -= damage
+	if health <= 0:
+		queue_free() # TEMPORARY !!!
 
 # Rotate the camera given a 2D vector of mouse motion
 func _rotate_camera(dir: Vector2) -> void:
