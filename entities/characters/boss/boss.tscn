@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bngn2d8kyo3lx"]
+[gd_scene load_steps=10 format=3 uid="uid://bngn2d8kyo3lx"]
 
 [ext_resource type="Script" uid="uid://2lg2gvua08a1" path="res://entities/characters/boss/boss.gd" id="1_i8oec"]
 [ext_resource type="Texture2D" uid="uid://dbrmphttkbcpd" path="res://entities/characters/boss/EXT_andromalius-57x88.png" id="1_y31no"]
+[ext_resource type="PackedScene" uid="uid://c54isb5yn42fd" path="res://entities/characters/boss/fireball/fireball.tscn" id="3_22cnm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8oec"]
 atlas = ExtResource("1_y31no")
@@ -57,3 +58,9 @@ frame_progress = 0.23810208
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0793457, 0)
 shape = SubResource("CapsuleShape3D_y31no")
+
+[node name="Fireball" parent="." instance=ExtResource("3_22cnm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[connection signal="fireball_out" from="Fireball" to="." method="_on_fireball_out"]

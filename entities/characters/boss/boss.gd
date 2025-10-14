@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var health: float = 10 # Boss life
 
 var target: Node3D = null # Target to chase
+var _fireball_available: bool = true
 
 var walk_vel: Vector3 # Walking velocity
 
@@ -19,6 +20,9 @@ func take_damage(dmg: float) -> void:
 func _physics_process(delta: float) -> void:
 	# If target locked in
 	if target != null:
+		if _fireball_available:
+			_fireball_available = false
+			$Fireball.launch(target.global_position)
 		velocity = _chase(delta, target.global_position)
 	move_and_slide()
 
@@ -30,3 +34,7 @@ func _chase(delta: float, target_position: Vector3) -> Vector3:
 
 func _on_player_presence_declared(node: Variant) -> void:
 	target = node
+
+
+func _on_fireball_out() -> void:
+	_fireball_available = true
