@@ -35,7 +35,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	# Capture the mouse for FPS movements
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# TEMP: Signal his presence to everybody
 	presence_declared.emit(self)

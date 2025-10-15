@@ -131,7 +131,15 @@ func _on_call_panel_close_pressed() -> void:
 	call_panel.hide()
 
 func _on_call_panel_call_pressed() -> void:
-	if selected_contact == "Boss":
-		print("Boss called")
-	else:
-		print("Somebody random called")
+	if not DialogueController.is_playing():
+		call_panel.hide()
+		if selected_contact == "Boss":
+			var anim_player = $ConfCameraPanel/ConfCamera/AnimationPlayer
+			anim_player.play("FadeIn")
+			anim_player.animation_finished.connect(func(_name): 
+				$BossCalledSequence.play(), CONNECT_ONE_SHOT
+			)
+		else:
+				var line = DialogueLine.new("PLAYER", "No response...\nI should really call the boss.")
+				DialogueController.push_dialogue(line)
+				DialogueController.play_queue()
