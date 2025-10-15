@@ -48,6 +48,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		var dir = event.relative * 0.001
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			_rotate_camera(dir)
+	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
 	if locked:
