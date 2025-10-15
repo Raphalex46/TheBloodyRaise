@@ -1,6 +1,6 @@
 extends Node
 
-@export var dialogue: Array[String] # Dialogue for this holder
+@export var dialogue: Array[DialogueLine] # Dialogue for this holder
 @export var autoplay: bool # Whether to autoplay dialogue at start
 @onready var queue_end_callback: Node = get_node_or_null("Callback")
 
@@ -19,4 +19,3 @@ func push_dialogue() -> void:
 	for d in dialogue:
 		dialogue_controller.push_dialogue(d)
 	dialogue_controller.play_queue()
-
