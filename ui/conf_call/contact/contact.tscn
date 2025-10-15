@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c14yvjtgourbe"]
+[gd_scene load_steps=6 format=3 uid="uid://c14yvjtgourbe"]
 
+[ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="1_10sks"]
 [ext_resource type="Script" uid="uid://bsfqvkfa87cmt" path="res://ui/conf_call/contact/contact.gd" id="1_fa3gt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa3gt"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0.21176471, 0.2, 0.23921569, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10sks"]
-bg_color = Color(0.15294118, 0.14509805, 0.1764706, 1)
+bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_668bn"]
 bg_color = Color(0.14901961, 0.14509805, 0.17254902, 1)
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_10sks")
 theme_override_styles/normal = SubResource("StyleBoxFlat_fa3gt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_10sks")
 theme_override_styles/focus = SubResource("StyleBoxFlat_668bn")
