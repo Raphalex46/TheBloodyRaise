@@ -101,16 +101,21 @@ var contact_names: Array[String] = [
 
 
 @onready var contact_container: VBoxContainer = $ContactList/ScrollContainer/VBoxContainer
+@onready var contact_container_title: Label = $ContactList/TitlePanel/Label
 @onready var call_panel: Panel = $ConfCameraPanel/CallPanel
 @onready var call_panel_label: Label = $ConfCameraPanel/CallPanel/Label
 @onready var call_panel_close_button: Button = $ConfCameraPanel/CallPanel/CloseButton
+@onready var call_panel_call_button: Button = $ConfCameraPanel/CallPanel/CallButton
 
 var contact_scene = preload("./contact/contact.tscn")
 var selected_contact: String = ""
 
 func _ready() -> void:
 	call_panel_close_button.pressed.connect(_on_call_panel_close_pressed)
+	call_panel_call_button.pressed.connect(_on_call_panel_call_pressed)
 	contact_names.sort()
+	contact_names.push_front("Boss")
+	contact_container_title.text += " (" + str(contact_names.size()) + ")"
 	for n in contact_names:
 		var contact = contact_scene.instantiate()
 		contact_container.add_child(contact)
@@ -124,3 +129,9 @@ func _on_contact_pressed(contact_name: String) -> void:
 
 func _on_call_panel_close_pressed() -> void:
 	call_panel.hide()
+
+func _on_call_panel_call_pressed() -> void:
+	if selected_contact == "Boss":
+		print("Boss called")
+	else:
+		print("Somebody random called")
