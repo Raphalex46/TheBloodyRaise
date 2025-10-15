@@ -1,30 +1,61 @@
-[gd_scene load_steps=12 format=3 uid="uid://drekkkckj8qlt"]
+[gd_scene load_steps=23 format=3 uid="uid://drekkkckj8qlt"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_gtwgn"]
-[ext_resource type="Texture2D" uid="uid://ds3dnmswk7m7c" path="res://ui/conf_call/TEMP_boss.png" id="2_12ymn"]
-[ext_resource type="Texture2D" uid="uid://doqo501vrp0bj" path="res://ui/conf_call/TEMP_buttons.png" id="4_eya8e"]
+[ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
+[ext_resource type="Texture2D" uid="uid://duloui3u8x8mw" path="res://ui/conf_call/boss_pic.png" id="2_yi3jc"]
+[ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_eya8e"]
+[ext_resource type="Texture2D" uid="uid://cj406tcbuf4r4" path="res://ui/conf_call/mic.png" id="4_jlhm1"]
+[ext_resource type="Texture2D" uid="uid://cefnrr4y71ksu" path="res://ui/conf_call/cam.png" id="5_y62tu"]
 [ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
+[ext_resource type="Texture2D" uid="uid://cs3rpcgxgsln6" path="res://ui/conf_call/share.png" id="6_685ik"]
+[ext_resource type="Texture2D" uid="uid://dxsygrchpm8dc" path="res://ui/conf_call/end_call.png" id="7_6phgv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
-bg_color = Color(0.16078432, 0.15686275, 0.18039216, 1)
+bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_685ik"]
+bg_color = Color(0.10980392, 0.105882354, 0.12941177, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eya8e"]
+bg_color = Color(0.21176471, 0.2, 0.23921569, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(3.3691526e-07, 0.509808, 0.25591245, 1)
+border_color = Color(0.29803923, 0.32941177, 0.28235295, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lumt"]
-bg_color = Color(0.23137255, 0.22352941, 0.27058825, 1)
+bg_color = Color(0.21176471, 0.2, 0.23921569, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi3jc"]
+bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlhm1"]
+bg_color = Color(0.2627451, 0.24705882, 0.29411766, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y62tu"]
+bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
+border_width_left = 4
+border_width_right = 4
+border_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_12ymn"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_jlhm1")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_y62tu")
 
 [sub_resource type="Animation" id="Animation_0lumt"]
 resource_name = "FadeIn"
@@ -86,6 +117,18 @@ _data = {
 &"RESET": SubResource("Animation_12ymn")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk1bl"]
+bg_color = Color(0.10980392, 0.105882354, 0.12941177, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.21176471, 0.2, 0.23921569, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="ConfCall" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -104,7 +147,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_12ymn")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TopBar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.04
+theme_override_styles/panel = SubResource("StyleBoxFlat_685ik")
+
+[node name="TextureRect" type="TextureRect" parent="TopBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+texture = ExtResource("2_6phgv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TopBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_right = 0.1
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("3_eya8e")
+text = "Family Startup"
+vertical_alignment = 1
 
 [node name="ConfCameraPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -115,25 +185,35 @@ anchor_right = 0.95
 anchor_bottom = 0.7
 theme_override_styles/panel = SubResource("StyleBoxFlat_eya8e")
 
-[node name="ConfCamera" type="TextureRect" parent="ConfCameraPanel"]
+[node name="Label" type="Label" parent="ConfCameraPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+anchor_left = 0.030000001
+anchor_top = 0.85
+anchor_right = 0.2
+anchor_bottom = 0.95
+theme = ExtResource("3_eya8e")
+text = "Boss"
+vertical_alignment = 1
+
+[node name="Other" type="TextureRect" parent="ConfCameraPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.15
+anchor_right = 0.65
+anchor_bottom = 0.85
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_12ymn")
+texture = ExtResource("2_yi3jc")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="Buttons" type="Control" parent="ConfCameraPanel"]
 layout_mode = 1
-anchor_left = 0.3
+anchor_left = 0.35
 anchor_top = 0.8
-anchor_right = 0.7
+anchor_right = 0.65
 anchor_bottom = 0.98
 offset_left = 3.0517578e-05
 offset_top = 3.0517578e-05
@@ -141,14 +221,44 @@ offset_bottom = 3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+[node name="Mic" type="TextureRect" parent="ConfCameraPanel/Buttons"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.0
+texture = ExtResource("4_jlhm1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cam" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.5
+anchor_bottom = 1.0
+texture = ExtResource("5_y62tu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Share" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.75
+anchor_bottom = 1.0
+texture = ExtResource("6_685ik")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EndCall" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_eya8e")
+texture = ExtResource("7_6phgv")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CallPanel" type="Panel" parent="ConfCameraPanel"]
 visible = false
@@ -173,6 +283,7 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_eya8e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -238,6 +349,7 @@ anchor_top = 0.02
 anchor_right = 0.95
 anchor_bottom = 0.1
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yi3jc")
 
 [node name="Label" type="Label" parent="ContactList/TitlePanel"]
 layout_mode = 1
@@ -246,6 +358,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_eya8e")
 text = "Contacts"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -261,6 +374,7 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_12ymn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContactList/ScrollContainer"]
 layout_mode = 2
@@ -280,3 +394,13 @@ anchor_left = 0.25
 anchor_top = 0.72
 anchor_right = 0.95
 anchor_bottom = 0.95
+
+[node name="DialoguePanel" type="Panel" parent="Dialogue"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sk1bl")
