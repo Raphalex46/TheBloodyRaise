@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=36 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_gtwgn"]
@@ -7,9 +7,11 @@
 [ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_eya8e"]
 [ext_resource type="Texture2D" uid="uid://cj406tcbuf4r4" path="res://ui/conf_call/mic.png" id="4_jlhm1"]
 [ext_resource type="Texture2D" uid="uid://cefnrr4y71ksu" path="res://ui/conf_call/cam.png" id="5_y62tu"]
-[ext_resource type="PackedScene" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
+[ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
 [ext_resource type="Texture2D" uid="uid://cs3rpcgxgsln6" path="res://ui/conf_call/share.png" id="6_685ik"]
 [ext_resource type="Texture2D" uid="uid://dxsygrchpm8dc" path="res://ui/conf_call/end_call.png" id="7_6phgv"]
+[ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="11_7h6mm"]
+[ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="12_32qip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
 bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
@@ -30,6 +32,42 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="Animation" id="Animation_32qip"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConfCamera:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7tivt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConfCamera:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7tivt"]
+_data = {
+&"FadeIn": SubResource("Animation_32qip"),
+&"RESET": SubResource("Animation_7tivt")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lumt"]
 bg_color = Color(0.21176471, 0.2, 0.23921569, 1)
@@ -57,65 +95,91 @@ corner_radius_bottom_left = 2
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_jlhm1")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_y62tu")
 
-[sub_resource type="Animation" id="Animation_0lumt"]
-resource_name = "FadeIn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[sub_resource type="Resource" id="Resource_7tivt"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "BOSS"
+line = "Hello Sir... Madam... Ah, so many of you call me every day with the same problems. I'm listening, what is it this time?"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
-[sub_resource type="Animation" id="Animation_12ymn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="Resource" id="Resource_32qip"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "PLAYER"
+line = "Hello Mr Boss. I'm not calling you about a problem, on the contrary, but to highlight the work I've done this year, which, given my efficiency, could justify a small..."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_12ymn"]
-_data = {
-&"FadeIn": SubResource("Animation_0lumt"),
-&"RESET": SubResource("Animation_12ymn")
-}
+[sub_resource type="Resource" id="Resource_acevj"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "BOSS"
+line = "Oh, a pay rise, it's been a while since anyone tried that on me. You can save your breath, it's impossible, not enough profit margins this year."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_ycdvu"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "PLAYER"
+line = "I beg to differ, sir. Profits are significantly higher than last year and..."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_dmyxh"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "BOSS"
+line = "I thought I made myself clear, there will be no negotiation. But I've never been one to shy away from a good fight! I hope you're well prepared."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_jo17q"]
+script = ExtResource("12_32qip")
+run_2 = true
+speaker = "BOSS"
+line = "Hello Sir... Madam... Ah, so many of you call me constantly with your little problems. I'm listening."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_duxwk"]
+script = ExtResource("12_32qip")
+run_2 = true
+speaker = "PLAYER"
+line = "Hello, Mr Boss. I'm not calling you about a problem, on the contrary, but to highlight the work done this year, which, given my efficiency, could justify a small..."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_jxuvg"]
+script = ExtResource("12_32qip")
+run_2 = true
+speaker = "BOSS"
+line = "Oh, another pay rise, it's been a while since anyone tried that on me. You can save your breath, it's impossible, there's not enough margin at the moment."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_84rli"]
+script = ExtResource("12_32qip")
+run_2 = true
+speaker = "PLAYER"
+line = "I beg to differ, sir. Profits are significantly higher than last year and..."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_34aqg"]
+script = ExtResource("12_32qip")
+run_2 = true
+speaker = "BOSS"
+line = "I thought I made myself clear. I won't negotiate with you. But I will fight you if you insist! I hope you're well prepared."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="GDScript" id="GDScript_32qip"]
+script/source = "extends Node
+
+func callback() -> void:
+	Events.emit_signal(\"change_hud_mode\", HUD.Mode.HUD)
+	Events.emit_signal(\"unlock_player\")
+"
+
+[sub_resource type="Resource" id="Resource_llhd5"]
+script = ExtResource("12_32qip")
+run_1 = true
+run_2 = true
+speaker = "PLAYER"
+line = "How nerve-wracking it is to call the boss for a raise, but today I've made up my mind, I'm going to ask him."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
 [node name="ConfCall" type="Control"]
 layout_mode = 3
@@ -158,8 +222,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
 anchor_right = 0.1
-offset_right = 40.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
 theme = ExtResource("3_eya8e")
 text = "Family Startup"
 vertical_alignment = 1
@@ -167,49 +230,68 @@ vertical_alignment = 1
 [node name="ConfCameraPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
+anchor_left = 0.21
 anchor_top = 0.1
 anchor_right = 0.95
 anchor_bottom = 0.7
 theme_override_styles/panel = SubResource("StyleBoxFlat_eya8e")
 
-[node name="Label" type="Label" parent="ConfCameraPanel"]
+[node name="ConfCamera" type="Control" parent="ConfCameraPanel"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ConfCameraPanel/ConfCamera"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_7tivt")
+}
+
+[node name="Label" type="Label" parent="ConfCameraPanel/ConfCamera"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.030000001
 anchor_top = 0.85
 anchor_right = 0.2
 anchor_bottom = 0.95
+offset_left = 1.5258789e-05
+offset_top = 3.0517578e-05
+offset_right = 30.200012
+offset_bottom = 11.0
 theme = ExtResource("3_eya8e")
 text = "Boss"
 vertical_alignment = 1
 
-[node name="Other" type="TextureRect" parent="ConfCameraPanel"]
+[node name="Other" type="TextureRect" parent="ConfCameraPanel/ConfCamera"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35
 anchor_top = 0.15
 anchor_right = 0.65
 anchor_bottom = 0.85
+offset_bottom = 3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_yi3jc")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Buttons" type="Control" parent="ConfCameraPanel"]
+[node name="Buttons" type="Control" parent="ConfCameraPanel/ConfCamera"]
 layout_mode = 1
 anchor_left = 0.35
 anchor_top = 0.8
 anchor_right = 0.65
 anchor_bottom = 0.98
-offset_left = 3.0517578e-05
 offset_top = 3.0517578e-05
-offset_bottom = 3.0517578e-05
+offset_right = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Mic" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+[node name="Mic" type="TextureRect" parent="ConfCameraPanel/ConfCamera/Buttons"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.25
@@ -218,7 +300,7 @@ texture = ExtResource("4_jlhm1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Cam" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+[node name="Cam" type="TextureRect" parent="ConfCameraPanel/ConfCamera/Buttons"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
@@ -228,7 +310,7 @@ texture = ExtResource("5_y62tu")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Share" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+[node name="Share" type="TextureRect" parent="ConfCameraPanel/ConfCamera/Buttons"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -238,7 +320,7 @@ texture = ExtResource("6_685ik")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EndCall" type="TextureRect" parent="ConfCameraPanel/Buttons"]
+[node name="EndCall" type="TextureRect" parent="ConfCameraPanel/ConfCamera/Buttons"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75
@@ -253,10 +335,14 @@ visible = false
 self_modulate = Color(1, 0.30980393, 1, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -277,12 +363,13 @@ vertical_alignment = 1
 
 [node name="CloseButton" type="Button" parent="ConfCameraPanel/CallPanel"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -52.359985
 offset_bottom = 52.0
 grow_horizontal = 0
+focus_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/CallPanel/CloseButton"]
 layout_mode = 1
@@ -307,6 +394,7 @@ offset_right = 26.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/CallPanel/CallButton"]
 layout_mode = 1
@@ -324,7 +412,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.1
-anchor_right = 0.23
+anchor_right = 0.2
 anchor_bottom = 0.98
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0lumt")
@@ -354,12 +442,11 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="ContactList"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 60.0
-offset_right = -10.0
-offset_bottom = -10.0
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.99
+offset_top = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_12ymn")
@@ -370,15 +457,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_12ymn")
-}
-
 [node name="Dialogue" parent="." instance=ExtResource("5_yi3jc")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
+anchor_left = 0.21
 anchor_top = 0.72
 anchor_right = 0.95
 anchor_bottom = 0.95
+
+[node name="BossCalledSequence" parent="." instance=ExtResource("11_7h6mm")]
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_7tivt"), SubResource("Resource_32qip"), SubResource("Resource_acevj"), SubResource("Resource_ycdvu"), SubResource("Resource_dmyxh"), SubResource("Resource_jo17q"), SubResource("Resource_duxwk"), SubResource("Resource_jxuvg"), SubResource("Resource_84rli"), SubResource("Resource_34aqg")])
+
+[node name="Callback" type="Node" parent="BossCalledSequence"]
+script = SubResource("GDScript_32qip")
+
+[node name="InitialDialogue" parent="." instance=ExtResource("11_7h6mm")]
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_llhd5")])
+autoplay = true

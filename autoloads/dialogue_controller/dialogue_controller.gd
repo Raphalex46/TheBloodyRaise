@@ -15,7 +15,8 @@ func _play_dialogue(line: DialogueLine):
 
 # Function to be called by the UI when dialogue is finished
 func dialogue_finished() -> void:
-	if dialogue_queue.is_empty() or play_count == 0:
+	play_count -= 1
+	if dialogue_queue.is_empty() or play_count <= 0:
 		emit_signal(&"queue_finished")
 		return
 	else:
@@ -29,3 +30,6 @@ func play_queue() -> void:
 	play_count = dialogue_queue.size()
 	if play_count != 0:
 		_play_dialogue(dialogue_queue.pop_front())
+
+func is_playing() -> bool:
+	return play_count > 0

@@ -18,6 +18,7 @@ var elapsed_blink_time: float = 0 # Same kind of counter but for blinking the pr
 var content_length: int = 0 # Length of the content
 var display: bool = false # Enables or disables this node's logic
 var finished: bool = false # Whether the text has finished displaying
+var current_character: String
 
 func _ready() -> void:
 	_reset_text_label()
@@ -44,14 +45,22 @@ func _update_displayed_chars(delta: float) -> void:
 	elapsed_character_time += delta
 	while elapsed_character_time >= time_char_interval and text_label.visible_characters < content_length:
 		elapsed_character_time -= time_char_interval
-		if text_label.text[text_label.visible_characters] != "":
-			sound_effect.pitch_scale = randf_range(0.7, 0.9)
-			sound_effect.play()
+		if text_label.text[text_label.visible_characters] != "" and not(text_label.visible_characters % int(char_per_sec / 10)):
+			_play_speaker_sound()
 		text_label.visible_characters += 1
 	if text_label.visible_characters == content_length:
 		# If text is done displaying, just blink the prompt and set finished to true
 		_display_blink_prompt()
 		finished = true
+
+func _play_speaker_sound() -> void:
+	match current_character:
+		"PLAYER":
+			sound_effect.pitch_scale = randf_range(1.4, 1.5)
+			sound_effect.play()
+		"BOSS":
+			sound_effect.pitch_scale = randf_range(0.7, 0.9)
+			sound_effect.play()
 
 # Reset this node
 func _reset_text_label() -> void:
@@ -74,9 +83,11 @@ func _display_blink_prompt() -> void:
 # Public function to display dialogue
 func display_dialogue(line: DialogueLine) -> void:
 	if not disabled:
-		text_label.text = line.speaker + "\n\n" + line.line
-		text_label.visible_characters = line.speaker.length()
+		var speaker = Characters.get_speaker_name(line.speaker)
+		text_label.text = speaker + "\n\n" + line.line
+		text_label.visible_characters = speaker.length()
 		content_length = text_label.text.length()
 		display = true
 		finished = false
+		current_character = line.speaker
 		show()

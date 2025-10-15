@@ -1,21 +1,25 @@
 extends Node
 
-@export var dialogue: Array[DialogueLine] # Dialogue for this holder
+@export var dialogue: Array[SavePathDialogueLine] # Dialogue for this holder
 @export var autoplay: bool # Whether to autoplay dialogue at start
 @onready var queue_end_callback: Node = get_node_or_null("Callback")
 
 @onready var dialogue_controller: Node = $"/root/DialogueController"
 
+var savepoint: String
+
 func _ready() -> void:
-	dialogue_controller.queue_finished.connect(_on_queue_finished)
+	savepoint = SaveCookieController.retrieve_savepoint()
 	if autoplay:
-		push_dialogue()
+		play()
 
 func _on_queue_finished() -> void:
 	if queue_end_callback:
 		queue_end_callback.callback()
 
-func push_dialogue() -> void:
+func play() -> void:
 	for d in dialogue:
-		dialogue_controller.push_dialogue(d)
+		if d and d.should_play(savepoint):
+			dialogue_controller.push_dialogue(d)
 	dialogue_controller.play_queue()
+	dialogue_controller.queue_finished.connect(_on_queue_finished, CONNECT_ONE_SHOT)
