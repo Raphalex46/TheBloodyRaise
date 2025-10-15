@@ -23,8 +23,10 @@ func apply_mode() -> void:
 			hud.process_mode = Node.PROCESS_MODE_DISABLED
 			hud.hide()
 			hud.disabled = true
+			Events.emit_signal("lock_player")
 		Mode.HUD:
 			conf_call.process_mode = Node.PROCESS_MODE_DISABLED
 			conf_call.hide()
 			hud.process_mode = Node.PROCESS_MODE_INHERIT
 			hud.show()
+			Events.emit_signal("unlock_player")
