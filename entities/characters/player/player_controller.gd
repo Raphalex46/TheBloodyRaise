@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	if locked:
 		return
 	# Handle shoots
-	if Input.is_action_just_pressed(&"shoot"):
+	if Input.is_action_just_pressed(&"shoot") and weapon.animation == &"default":
 		_shoot()
 	# Handle jumps
 	var jumping: bool

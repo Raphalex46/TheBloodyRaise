@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7u6ytw28g8pb"
-path.s3tc="res://.godot/imported/TEMP_weapon_concept.png-94b15158860c4c009e803c7fe8986c09.s3tc.ctex"
+path.s3tc="res://.godot/imported/weapon.png-606f335f06fac37815a52aa63873703f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/characters/player/TEMP_weapon_concept.png"
-dest_files=["res://.godot/imported/TEMP_weapon_concept.png-94b15158860c4c009e803c7fe8986c09.s3tc.ctex"]
+source_file="res://entities/characters/player/weapon.png"
+dest_files=["res://.godot/imported/weapon.png-606f335f06fac37815a52aa63873703f.s3tc.ctex"]
 
 [params]
 

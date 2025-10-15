@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
-[ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/TEMP_weapon_concept.png" id="2_lbevp"]
+[ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
 [ext_resource type="Script" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
-[ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/TEMP_crosshair.png" id="4_a3s12"]
+[ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/crosshair.png" id="4_a3s12"]
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="4_lbevp"]
 [ext_resource type="Script" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
 
@@ -42,6 +42,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mx21o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d5hj")
 }],
 "loop": false,
 "name": &"shooting",
@@ -69,7 +72,6 @@ current = true
 [node name="Weapon" type="AnimatedSprite3D" parent="Camera"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.09014857, -0.17977798, -0.49287897)
 sprite_frames = SubResource("SpriteFrames_jiqs4")
-animation = &"shooting"
 script = ExtResource("3_qrd5i")
 
 [node name="Crosshair" type="Sprite3D" parent="Camera"]
