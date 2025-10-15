@@ -6,6 +6,7 @@ extends CharacterBody3D
 # (https://github.com/rbarongr/GodotFirstPersonController) which is under the
 # CC0-1.0 license.
 
+@export var locked: bool # If player controls are locked, player input is ignored
 @export var speed: float = 5 # Walking speed
 @export var acceleration: float = 40 # Walking acceleration
 @export var jump_height: float = 1 # Jumping height
@@ -27,6 +28,11 @@ var walk_vel: Vector3 # Walking velocity
 var grav_vel: Vector3 # Gravity velocity
 var jump_vel: Vector3 # Jumping velocity
 
+func _enter_tree() -> void:
+		# Subscribe to the lock / unlock events
+	Events.lock_player.connect(_on_player_lock)
+	Events.unlock_player.connect(_on_player_unlock)
+
 func _ready() -> void:
 	# Capture the mouse for FPS movements
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -36,12 +42,16 @@ func _ready() -> void:
 
 # Handle mouse motion inputs
 func _unhandled_input(event: InputEvent) -> void:
+	if locked:
+		return
 	if event is InputEventMouseMotion:
 		var dir = event.relative * 0.001
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			_rotate_camera(dir)
 
 func _physics_process(delta: float) -> void:
+	if locked:
+		return
 	# Handle shoots
 	if Input.is_action_just_pressed(&"shoot"):
 		_shoot()
@@ -121,3 +131,9 @@ func _jump(delta: float, jumping: bool) -> Vector3:
 	else:
 		jump_vel = jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
+	
+func _on_player_lock() -> void:
+	locked = true
+
+func _on_player_unlock() -> void:
+	locked = false

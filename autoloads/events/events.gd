@@ -1,0 +1,6 @@
+extends Node
+
+@warning_ignore_start("UNUSED_SIGNAL")
+signal lock_player
+signal unlock_player
+@warning_ignore_restore("UNUSED_SIGNAL")

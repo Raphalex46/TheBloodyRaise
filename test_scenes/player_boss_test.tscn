@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://csfmorl58jqyc"]
+[gd_scene load_steps=8 format=3 uid="uid://csfmorl58jqyc"]
 
 [ext_resource type="PackedScene" uid="uid://dxusiga1lv2ty" path="res://entities/characters/player/player.tscn" id="1_7b2vw"]
+[ext_resource type="Script" uid="uid://ddc3ox6ehox8d" path="res://test_scenes/player_boss_test.gd" id="1_ue2xo"]
 [ext_resource type="PackedScene" uid="uid://bngn2d8kyo3lx" path="res://entities/characters/boss/boss.tscn" id="2_t62pw"]
 [ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="4_lcwxe"]
 [ext_resource type="Script" uid="uid://7egavmnv8u5y" path="res://test_scenes/dialogue_callback.gd" id="4_ue2xo"]
@@ -12,6 +13,7 @@ data = PackedVector3Array(-0.5, -0.04321289, 0.5, -0.5, -0.04321289, -0.5, -0.5,
 data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
 
 [node name="PlayerBossTest" type="Node3D"]
+script = ExtResource("1_ue2xo")
 
 [node name="Player" parent="." instance=ExtResource("1_7b2vw")]
 
