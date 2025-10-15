@@ -73,9 +73,10 @@ func _blink_prompt(delta: float):
 			elapsed_blink_time = 0
 
 # Public function to display dialogue
-func display_dialogue(content: String) -> void:
+func display_dialogue(line: DialogueLine) -> void:
 	if not disabled:
-		text_label.text = content + prompt
-		content_length = content.length()
+		text_label.text = line.speaker + "\n\n" + line.line + prompt
+		text_label.visible_characters = line.speaker.length()
+		content_length = text_label.text.length() - prompt_len
 		display = true
 		finished = false
