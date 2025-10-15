@@ -1,24 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=15 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
-[ext_resource type="Texture2D" uid="uid://eejnph325i1x" path="res://entities/characters/player/TEMP_weapon.png" id="2_eoic6"]
-[ext_resource type="Script" uid="uid://byog5p8b60qqe" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
+[ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/TEMP_weapon_concept.png" id="2_lbevp"]
+[ext_resource type="Script" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
+[ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/TEMP_crosshair.png" id="4_a3s12"]
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="4_lbevp"]
-[ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
+[ext_resource type="Script" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qrd5i"]
-atlas = ExtResource("2_eoic6")
-region = Rect2(0, 0, 70, 69)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3s12"]
+atlas = ExtResource("2_lbevp")
+region = Rect2(0, 0, 372, 510)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqnow"]
-atlas = ExtResource("2_eoic6")
-region = Rect2(70, 0, 70, 69)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0gj2"]
+atlas = ExtResource("2_lbevp")
+region = Rect2(0, 0, 372, 510)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d5hj"]
+atlas = ExtResource("2_lbevp")
+region = Rect2(372, 0, 372, 510)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx21o"]
+atlas = ExtResource("2_lbevp")
+region = Rect2(744, 0, 372, 510)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jiqs4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qrd5i")
+"texture": SubResource("AtlasTexture_a3s12")
 }],
 "loop": true,
 "name": &"default",
@@ -26,13 +35,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qrd5i")
+"texture": SubResource("AtlasTexture_m0gj2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqnow")
+"texture": SubResource("AtlasTexture_0d5hj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqnow")
+"texture": SubResource("AtlasTexture_mx21o")
 }],
 "loop": false,
 "name": &"shooting",
@@ -54,15 +63,21 @@ size = Vector3(0.1, 0.1, 0.1)
 script = ExtResource("1_jiqs4")
 
 [node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 current = true
 
 [node name="Weapon" type="AnimatedSprite3D" parent="Camera"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.21207365, -0.49287897)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.09014857, -0.17977798, -0.49287897)
 sprite_frames = SubResource("SpriteFrames_jiqs4")
 animation = &"shooting"
 script = ExtResource("3_qrd5i")
 
+[node name="Crosshair" type="Sprite3D" parent="Camera"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, -1)
+texture = ExtResource("4_a3s12")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0915577, 0)
 shape = SubResource("CapsuleShape3D_jiqs4")
 
 [node name="Bullet" type="Sprite3D" parent="."]
