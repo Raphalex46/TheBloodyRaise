@@ -48,6 +48,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		var dir = event.relative * 0.001
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			_rotate_camera(dir)
+	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
 	if locked:
@@ -70,11 +72,11 @@ func _shoot():
 	
 	# Get ray origin
 	var space_state = get_world_3d().direct_space_state
-	var mousepos= get_viewport().get_mouse_position()
-	var origin = camera.project_ray_origin(mousepos)
+	var centerpos = get_viewport().get_visible_rect().size / 2
+	var origin = camera.project_ray_origin(centerpos)
 	
 	# Compute ray end and query
-	var end = origin + camera.project_ray_normal(mousepos) * weapon_range
+	var end = origin + camera.project_ray_normal(centerpos) * weapon_range
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_areas = true
 	query.exclude = [self]
