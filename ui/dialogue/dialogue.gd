@@ -3,14 +3,13 @@ class_name UIDialogue
 extends Control
 
 @export var char_per_sec: float = 10 # Number of characters to display per second
-@export var prompt: String = " >" # A simple prompt to display once text is done displaying
 @export var disabled: bool = false
-@onready var prompt_len: int = prompt.length() # Length of the prompt
-@export var prompt_blink_freq: float = 0.5 # Blink the prompt once every x seconds
 
 @onready var text_label: RichTextLabel = $Panel/RichTextLabel # Main text
 @onready var sound_effect: AudioStreamPlayer = $SoundEffect # Sound effect node
 @onready var dialogue_controller: Node = $"/root/DialogueController"
+@onready var blink_prompt: RichTextLabel = $"Panel/RichTextLabel/NextDialogue"
+@onready var blink_prompt_anim: AnimationPlayer = $"Panel/RichTextLabel/NextDialogue/AnimationPlayer"
 
 @onready var time_char_interval: float = 1/char_per_sec # Amount of time it takes to display a character
 
@@ -38,20 +37,20 @@ func _update_display(delta: float):
 		if Input.is_action_just_pressed(&"advance_dialogue"):
 			_reset_text_label()
 			dialogue_controller.dialogue_finished()
-		# If text is done displaying, just blink the prompt
-		_blink_prompt(delta)
 
 # Advance the elapsed time counter, display characters and play the sound
 # effect
 func _update_displayed_chars(delta: float) -> void:
 	elapsed_character_time += delta
-	while elapsed_character_time >= time_char_interval:
-		text_label.visible_characters += 1
+	while elapsed_character_time >= time_char_interval and text_label.visible_characters < content_length:
 		elapsed_character_time -= time_char_interval
 		if text_label.text[text_label.visible_characters] != "":
 			sound_effect.pitch_scale = randf_range(0.7, 0.9)
 			sound_effect.play()
+		text_label.visible_characters += 1
 	if text_label.visible_characters == content_length:
+		# If text is done displaying, just blink the prompt and set finished to true
+		_display_blink_prompt()
 		finished = true
 
 # Reset this node
@@ -60,23 +59,24 @@ func _reset_text_label() -> void:
 	content_length = 0
 	elapsed_character_time = 0
 	display = false
+	_hide_blink_prompt()
+	hide()
+
+func _hide_blink_prompt() -> void:
+	blink_prompt_anim.stop()
+	blink_prompt.hide()
 
 # Just blink the prompt at the specified frequency
-func _blink_prompt(delta: float):
-	elapsed_blink_time += delta
-	if elapsed_blink_time > prompt_blink_freq:
-		if text_label.visible_characters == content_length:
-			text_label.visible_characters += prompt_len
-			elapsed_blink_time = 0
-		else:
-			text_label.visible_characters = max(0, text_label.visible_characters - prompt_len)
-			elapsed_blink_time = 0
+func _display_blink_prompt() -> void:
+	blink_prompt.show()
+	blink_prompt_anim.play("Blink")
 
 # Public function to display dialogue
 func display_dialogue(line: DialogueLine) -> void:
 	if not disabled:
-		text_label.text = line.speaker + "\n\n" + line.line + prompt
+		text_label.text = line.speaker + "\n\n" + line.line
 		text_label.visible_characters = line.speaker.length()
-		content_length = text_label.text.length() - prompt_len
+		content_length = text_label.text.length()
 		display = true
 		finished = false
+		show()

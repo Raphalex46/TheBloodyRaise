@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_e0nub")
+current_mode = 1
 
 [node name="ConfCall" parent="." instance=ExtResource("1_4d6w6")]
 layout_mode = 1

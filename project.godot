@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 SaveCookieController="*res://autoloads/save_cookie_controller/save_cookie_controller.tscn"
 DialogueController="*res://autoloads/dialogue_controller/dialogue_controller.tscn"
-Hud="*res://ui/hud/hud.tscn"
 Events="*res://autoloads/events/events.tscn"
 
 [input]

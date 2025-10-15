@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drekkkckj8qlt"]
+[gd_scene load_steps=22 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_gtwgn"]
@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_eya8e"]
 [ext_resource type="Texture2D" uid="uid://cj406tcbuf4r4" path="res://ui/conf_call/mic.png" id="4_jlhm1"]
 [ext_resource type="Texture2D" uid="uid://cefnrr4y71ksu" path="res://ui/conf_call/cam.png" id="5_y62tu"]
-[ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
+[ext_resource type="PackedScene" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
 [ext_resource type="Texture2D" uid="uid://cs3rpcgxgsln6" path="res://ui/conf_call/share.png" id="6_685ik"]
 [ext_resource type="Texture2D" uid="uid://dxsygrchpm8dc" path="res://ui/conf_call/end_call.png" id="7_6phgv"]
 
@@ -116,18 +116,6 @@ _data = {
 &"FadeIn": SubResource("Animation_0lumt"),
 &"RESET": SubResource("Animation_12ymn")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk1bl"]
-bg_color = Color(0.10980392, 0.105882354, 0.12941177, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.21176471, 0.2, 0.23921569, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 
 [node name="ConfCall" type="Control"]
 layout_mode = 3
@@ -394,13 +382,3 @@ anchor_left = 0.25
 anchor_top = 0.72
 anchor_right = 0.95
 anchor_bottom = 0.95
-
-[node name="DialoguePanel" type="Panel" parent="Dialogue"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sk1bl")

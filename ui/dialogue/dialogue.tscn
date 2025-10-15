@@ -1,9 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://bov0nxbqsd6o4"]
+[gd_scene load_steps=9 format=3 uid="uid://bov0nxbqsd6o4"]
 
 [ext_resource type="Script" uid="uid://cpfoou4u22eql" path="res://ui/dialogue/dialogue.gd" id="1_8q5o4"]
 [ext_resource type="FontFile" uid="uid://l1pv5jrv71g0" path="res://ui/dialogue/EXT_VCR_OSD_MONO.ttf" id="2_h4lfh"]
 [ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="2_r2qx3"]
 [ext_resource type="AudioStream" uid="uid://dgn7vtd13k2ot" path="res://ui/dialogue/sound_effect.wav" id="3_m4qfh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2qx3"]
+bg_color = Color(0.10980392, 0.105882354, 0.12941177, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.21176471, 0.2, 0.23921569, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id="Animation_r2qx3"]
+resource_name = "Blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_jy5du"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jy5du"]
+_data = {
+&"Blink": SubResource("Animation_r2qx3"),
+&"RESET": SubResource("Animation_jy5du")
+}
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
@@ -15,24 +64,25 @@ grow_vertical = 2
 script = ExtResource("1_8q5o4")
 
 [node name="Panel" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.5019608)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_right = 0.9
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r2qx3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_r2qx3")
@@ -40,6 +90,30 @@ theme_override_fonts/normal_font = ExtResource("2_h4lfh")
 theme_override_font_sizes/normal_font_size = 20
 scroll_active = false
 scroll_following_visible_characters = true
+
+[node name="NextDialogue" type="RichTextLabel" parent="Panel/RichTextLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -98.79993
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_r2qx3")
+bbcode_enabled = true
+text = "(SPACE) [img=20x20]ui/dialogue/next_dialogue.png[/img]"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/RichTextLabel/NextDialogue"]
+libraries = {
+&"": SubResource("AnimationLibrary_jy5du")
+}
 
 [node name="SoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_m4qfh")
