@@ -88,7 +88,6 @@ func _display_blink_prompt() -> void:
 
 # Public function to display dialogue
 func display_dialogue(line: DialogueLine) -> void:
-	print(line.line)
 	if not disabled:
 		var speaker = Characters.get_speaker_name(line.speaker)
 		text_label.text = speaker + "\n\n" + line.line
