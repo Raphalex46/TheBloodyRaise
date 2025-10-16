@@ -8,6 +8,8 @@ extends CharacterBody3D
 # CC0-1.0 license.
 
 @export var locked: bool # If player controls are locked, player input is ignored
+@export var camera_locked: bool # Camera is locked
+@export var movement_locked: bool # Player movement is locked
 @export var speed: float = 5 # Walking speed
 @export var acceleration: float = 40 # Walking acceleration
 @export var jump_height: float = 1 # Jumping height
@@ -22,7 +24,9 @@ extends CharacterBody3D
 @onready var anim_player: AnimationPlayer = $Camera/AnimationPlayer
 
 signal shot_fired(hit_position)
+@warning_ignore_start("UNUSED_SIGNAL")
 signal presence_declared(node)
+@warning_ignore_restore("UNUSED_SIGNAL")
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -33,13 +37,14 @@ var jump_vel: Vector3 # Jumping velocity
 func _enter_tree() -> void:
 		# Subscribe to the lock / unlock events
 	Events.lock_player.connect(_on_player_lock)
+	Events.lock_player_movement.connect(_on_lock_player_movement)
 	Events.unlock_player.connect(_on_player_unlock)
 	Events.prepare_player_animation.connect(_on_prepare_player_animation)
 	Events.start_player_animation.connect(_on_start_player_animation)
 
 # Handle mouse motion inputs
 func _unhandled_input(event: InputEvent) -> void:
-	if locked:
+	if camera_locked:
 		return
 	if event is InputEventMouseMotion:
 		var dir = event.relative * 0.001
@@ -49,7 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
-	if locked:
+	if movement_locked:
 		return
 	# Handle shoots
 	if Input.is_action_just_pressed(&"shoot") and weapon.animation == &"default":
@@ -133,10 +138,12 @@ func _jump(delta: float, jumping: bool) -> Vector3:
 	return jump_vel
 	
 func _on_player_lock() -> void:
-	locked = true
+	movement_locked = true
+	camera_locked = true
 
 func _on_player_unlock() -> void:
-	locked = false
+	movement_locked = false
+	camera_locked = false
 
 func _on_prepare_player_animation(callback: Callable) -> void:
 	anim_player.play("PreparePCLookAway")
@@ -147,3 +154,6 @@ func _on_start_player_animation(callback: Callable) -> void:
 	anim_player.play("PCLookAway")
 	await anim_player.animation_finished
 	callback.call()
+
+func _on_lock_player_movement() -> void:
+	movement_locked = true
