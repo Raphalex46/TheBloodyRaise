@@ -5,5 +5,6 @@ signal lock_player
 signal unlock_player
 signal change_hud_mode (int)
 signal player_dead
+signal prepare_player_animation(Callable)
 signal start_player_animation(Callable)
 @warning_ignore_restore("UNUSED_SIGNAL")

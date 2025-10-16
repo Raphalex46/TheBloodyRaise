@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=19 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
@@ -135,7 +135,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1.7411015, 0, 1.1, 2)
+tracks/0/keys = PackedFloat32Array(0, 1.7411015, 0, 1.6, 0)
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -146,7 +146,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 3.1415927, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -158,7 +158,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [20.0]
+"values": [75.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -170,7 +170,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -182,7 +182,95 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpotLight3D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.6, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0d5hj"]
+resource_name = "PreparePCLookAway"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.7411015),
+"update": 0,
+"values": [Vector3(0, 1.1, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crosshair:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2.2191386),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:fov")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5547848),
+"update": 0,
+"values": [20.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -200,6 +288,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0gj2"]
 _data = {
 &"PCLookAway": SubResource("Animation_a3s12"),
+&"PreparePCLookAway": SubResource("Animation_0d5hj"),
 &"RESET": SubResource("Animation_m0gj2")
 }
 
@@ -233,7 +322,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, -1)
 texture = ExtResource("4_a3s12")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
-active = false
+reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_m0gj2")
 }

@@ -34,6 +34,7 @@ func _enter_tree() -> void:
 		# Subscribe to the lock / unlock events
 	Events.lock_player.connect(_on_player_lock)
 	Events.unlock_player.connect(_on_player_unlock)
+	Events.prepare_player_animation.connect(_on_prepare_player_animation)
 	Events.start_player_animation.connect(_on_start_player_animation)
 
 func _ready() -> void:
@@ -143,6 +144,11 @@ func _on_player_lock() -> void:
 
 func _on_player_unlock() -> void:
 	locked = false
+
+func _on_prepare_player_animation(callback: Callable) -> void:
+	anim_player.play("PreparePCLookAway")
+	await anim_player.animation_finished
+	callback.call()
 
 func _on_start_player_animation(callback: Callable) -> void:
 	anim_player.play("PCLookAway")

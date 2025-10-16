@@ -56,6 +56,7 @@ data = PackedVector3Array(-0.8811102, -4.712967, 0.3105, -0.8811102, -4.712967, 
 [node name="Office" type="Node3D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_ql6sr")]
+current_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("2_ul364")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.38075, 0.1, 7.7177324)
