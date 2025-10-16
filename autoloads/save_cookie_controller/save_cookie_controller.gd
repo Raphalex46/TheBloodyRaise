@@ -5,7 +5,7 @@ extends Node
 @export var stub_mode: bool
 @export var stub_savepoint: String
 
-var savepoint: String = ""
+var savepoint: String = &"run1"
 const SAVEPOINT_NAME: String = &"save_data"
 
 func retrieve_savepoint() -> String:
@@ -47,6 +47,16 @@ func download_file(content: String, filename: String):
 			content.to_utf8_buffer(),
 			filename
 		)
+
+func request_webcam():
+	if not stub_mode:
+		# Get the JSON interface for object building
+		var JSONInterface = JavaScriptBridge.get_interface(&"JSON")
+		var navigator =	JavaScriptBridge.get_interface(&"navigator")
+		if navigator != null and JSONInterface != null:
+			navigator.mediaDevices.getUserMedia(
+				JSONInterface.parse("{\"video\": true}")
+			)
 
 func _ready() -> void:
 	# Retrieve cookie information
