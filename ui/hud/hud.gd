@@ -39,4 +39,3 @@ func _apply_mode() -> void:
 			conf_call.hide()
 			hud.process_mode = Node.PROCESS_MODE_INHERIT
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			Events.emit_signal("unlock_player")

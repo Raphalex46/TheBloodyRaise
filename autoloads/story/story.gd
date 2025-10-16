@@ -8,3 +8,7 @@ func _enter_tree() -> void:
 
 func _on_player_dead():
 	get_tree().call_deferred("change_scene_to_packed", game_over_scene)
+
+func start_fps_phase() -> void:
+	Events.change_hud_mode.emit(HUD.Mode.HUD)
+	Events.start_player_animation.emit(func(): Events.unlock_player.emit())

@@ -467,8 +467,7 @@ metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 script/source = "extends Node
 
 func callback() -> void:
-	Events.emit_signal(\"change_hud_mode\", HUD.Mode.HUD)
-	Events.emit_signal(\"unlock_player\")
+	Story.start_fps_phase()
 "
 
 [sub_resource type="Resource" id="Resource_3wtk6"]

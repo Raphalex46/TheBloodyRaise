@@ -4,4 +4,4 @@
 
 [node name="SaveCookieController" type="Node"]
 script = ExtResource("1_xeg70")
-stub_savepoint = 4
+stub_savepoint = 5
