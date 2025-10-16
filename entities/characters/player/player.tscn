@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bfl5kimy705bd" path="res://entities/characters/player/bullet_impact_3.png" id="7_mnavw"]
 [ext_resource type="AudioStream" uid="uid://ouictu63lbrx" path="res://entities/characters/player/EXT_FootstepsConcrete3.wav" id="8_mx21o"]
 [ext_resource type="Texture2D" uid="uid://u13ye2my0u0j" path="res://entities/characters/player/bullet_impact_4.png" id="8_nuxbo"]
-[ext_resource type="AudioStream" uid="uid://dw4o4pgj76ssc" path="res://entities/characters/player/EXT_HumanInjured3.wav" id="13_2jd2e"]
+[ext_resource type="AudioStream" uid="uid://ovdab6b1npf7" path="res://ui/dialogue/sound_effect_otamatone.wav" id="14_mnavw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3s12"]
 atlas = ExtResource("2_lbevp")
@@ -430,9 +430,8 @@ stream = ExtResource("8_mx21o")
 volume_db = -10.0
 
 [node name="HurtSoundEffect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_2jd2e")
-volume_db = -5.0
-pitch_scale = 1.05
+stream = ExtResource("14_mnavw")
+pitch_scale = 1.25
 
 [connection signal="shot_fired" from="." to="Bullet" method="_on_player_shot_fired"]
 [connection signal="animation_finished" from="Camera/Weapon" to="Camera/Weapon" method="_on_animation_finished"]
