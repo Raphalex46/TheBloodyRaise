@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=29 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/crosshair.png" id="4_a3s12"]
 [ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
 [ext_resource type="Texture2D" uid="uid://cj1xvf3vvcu0t" path="res://entities/characters/player/bullet_impact_1.png" id="5_0s3gd"]
+[ext_resource type="Shader" uid="uid://cykwwjg2suwoh" path="res://ui/conf_call/conf_call.gdshader" id="5_2jd2e"]
 [ext_resource type="Texture2D" uid="uid://cwc1xco3opmcp" path="res://entities/characters/player/bullet_impact_2.png" id="6_2jd2e"]
 [ext_resource type="AudioStream" uid="uid://ceru86dr476rj" path="res://entities/characters/player/EXT_DesignedGunshot_Pistol1_Reverb.wav" id="6_a3s12"]
 [ext_resource type="AudioStream" uid="uid://b8wdkgr167vol" path="res://entities/characters/player/EXT_FootstepsConcrete2.wav" id="7_0d5hj"]
@@ -305,6 +306,9 @@ _data = {
 &"RESET": SubResource("Animation_m0gj2")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jd2e"]
+shader = ExtResource("5_2jd2e")
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jiqs4"]
 radius = 0.3
 
@@ -355,13 +359,11 @@ size = Vector3(0.1, 0.1, 0.1)
 script = ExtResource("1_jiqs4")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 current = true
-fov = 20.0
 
 [node name="Weapon" type="AnimatedSprite3D" parent="Camera"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.09014857, -0.17977798, -0.49287897)
-visible = false
 shaded = true
 sprite_frames = SubResource("SpriteFrames_jiqs4")
 autoplay = "default"
@@ -369,7 +371,6 @@ script = ExtResource("3_qrd5i")
 
 [node name="Crosshair" type="Sprite3D" parent="Camera"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, -1)
-visible = false
 texture = ExtResource("4_a3s12")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
@@ -379,8 +380,18 @@ libraries = {
 }
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera"]
-visible = false
 spot_range = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera/CanvasLayer"]
+material = SubResource("ShaderMaterial_2jd2e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0915577, 0)
