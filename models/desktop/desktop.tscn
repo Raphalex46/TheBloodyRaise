@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://hfc0lg04fx2x" path="res://models/desktop/desktop.glb" id="1_81bxw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81bxw"]
-size = Vector3(1.2568359, 0.9241333, 1.0814209)
+size = Vector3(0.97454834, 0.72407913, 0.8213806)
 
 [node name="Desktop" type="StaticBody3D"]
 
 [node name="desktop" parent="." instance=ExtResource("1_81bxw")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03564453, -0.17068481, -0.011047363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036468506, -0.11776924, -0.006210327)
 shape = SubResource("BoxShape3D_81bxw")
