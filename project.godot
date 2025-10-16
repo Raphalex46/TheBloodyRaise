@@ -21,6 +21,7 @@ SaveCookieController="*res://autoloads/save_cookie_controller/save_cookie_contro
 DialogueController="*res://autoloads/dialogue_controller/dialogue_controller.tscn"
 Events="*res://autoloads/events/events.tscn"
 Story="*res://autoloads/story/Story.tscn"
+Music="*res://autoloads/music/Music.tscn"
 
 [input]
 

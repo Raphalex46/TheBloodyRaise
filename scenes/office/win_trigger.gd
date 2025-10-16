@@ -10,4 +10,5 @@ func _on_body_entered(body: Node3D):
 		Events.lock_boss.emit()
 		body_entered.disconnect(_on_body_entered)
 		self.set_deferred("monitoring", false)
+		Music.fade_out()
 		$WinDialogue.play()
