@@ -6,7 +6,6 @@ extends Control
 @export var disabled: bool = false
 
 @onready var text_label: RichTextLabel = $Panel/RichTextLabel # Main text
-@onready var sound_effect: AudioStreamPlayer = $SoundEffect # Sound effect node
 @onready var dialogue_controller: Node = $"/root/DialogueController"
 @onready var blink_prompt: RichTextLabel = $"Panel/RichTextLabel/NextDialogue"
 @onready var blink_prompt_anim: AnimationPlayer = $"Panel/RichTextLabel/NextDialogue/AnimationPlayer"
@@ -54,11 +53,18 @@ func _update_displayed_chars(delta: float) -> void:
 		finished = true
 
 func _play_speaker_sound() -> void:
+	var sound_effect: AudioStreamPlayer
 	match current_character:
 		"PLAYER":
-			sound_effect.pitch_scale = randf_range(1.4, 1.5)
+			sound_effect = $SoundEffectOtamatone
+			sound_effect.pitch_scale = randf_range(0.6, 0.8)
 			sound_effect.play()
 		"BOSS":
+			sound_effect = $SoundEffectBass
+			sound_effect.pitch_scale = randf_range(0.7, 0.9)
+			sound_effect.play()
+		"UNION":
+			sound_effect = $SoundEffectGuitar
 			sound_effect.pitch_scale = randf_range(0.7, 0.9)
 			sound_effect.play()
 
