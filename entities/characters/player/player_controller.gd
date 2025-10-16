@@ -92,6 +92,9 @@ func _shoot():
 		if result.collider.has_method(&"take_damage"):
 			result.collider.take_damage(weapon_damage)
 
+func handle_detection():
+	presence_declared.emit($CollisionShape3D)
+
 # Allows the player to take damage
 func take_damage(damage: int):
 	health -= damage
