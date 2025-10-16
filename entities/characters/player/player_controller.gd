@@ -94,7 +94,7 @@ func _shoot():
 func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
-		queue_free() # TEMPORARY !!!
+		Events.player_dead.emit()
 
 # Rotate the camera given a 2D vector of mouse motion
 func _rotate_camera(dir: Vector2) -> void:
