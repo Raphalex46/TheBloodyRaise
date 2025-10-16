@@ -13,6 +13,7 @@ var walk_vel: Vector3 # Walking velocity
 # Allows the boss to take damage
 func take_damage(dmg: int) -> void:
 	health -= dmg
+	$Sprite3D.play(&"hit")
 	if health <= 0:
 		# Might be a little harsh but an easy way out
 		queue_free()
