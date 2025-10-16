@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=30 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/crosshair.png" id="4_a3s12"]
 [ext_resource type="Script" uid="uid://dxfs3ijvfow61" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
 [ext_resource type="Texture2D" uid="uid://cj1xvf3vvcu0t" path="res://entities/characters/player/bullet_impact_1.png" id="5_0s3gd"]
-[ext_resource type="Shader" uid="uid://cykwwjg2suwoh" path="res://ui/conf_call/conf_call.gdshader" id="5_2jd2e"]
+[ext_resource type="Shader" path="res://ui/conf_call/conf_call.gdshader" id="5_2jd2e"]
 [ext_resource type="Texture2D" uid="uid://cwc1xco3opmcp" path="res://entities/characters/player/bullet_impact_2.png" id="6_2jd2e"]
 [ext_resource type="AudioStream" uid="uid://ceru86dr476rj" path="res://entities/characters/player/EXT_DesignedGunshot_Pistol1_Reverb.wav" id="6_a3s12"]
 [ext_resource type="AudioStream" uid="uid://b8wdkgr167vol" path="res://entities/characters/player/EXT_FootstepsConcrete2.wav" id="7_0d5hj"]
 [ext_resource type="Texture2D" uid="uid://bfl5kimy705bd" path="res://entities/characters/player/bullet_impact_3.png" id="7_mnavw"]
 [ext_resource type="AudioStream" uid="uid://ouictu63lbrx" path="res://entities/characters/player/EXT_FootstepsConcrete3.wav" id="8_mx21o"]
 [ext_resource type="Texture2D" uid="uid://u13ye2my0u0j" path="res://entities/characters/player/bullet_impact_4.png" id="8_nuxbo"]
+[ext_resource type="AudioStream" uid="uid://dw4o4pgj76ssc" path="res://entities/characters/player/EXT_HumanInjured3.wav" id="13_2jd2e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3s12"]
 atlas = ExtResource("2_lbevp")
@@ -427,6 +428,11 @@ volume_db = -10.0
 [node name="Footstep2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_mx21o")
 volume_db = -10.0
+
+[node name="HurtSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_2jd2e")
+volume_db = -5.0
+pitch_scale = 1.05
 
 [connection signal="shot_fired" from="." to="Bullet" method="_on_player_shot_fired"]
 [connection signal="animation_finished" from="Camera/Weapon" to="Camera/Weapon" method="_on_animation_finished"]
