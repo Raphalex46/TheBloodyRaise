@@ -1,6 +1,7 @@
-[gd_scene load_steps=67 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=69 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
+[ext_resource type="Shader" uid="uid://cykwwjg2suwoh" path="res://ui/conf_call/conf_call.gdshader" id="1_duxwk"]
 [ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
 [ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_eya8e"]
 [ext_resource type="Texture2D" uid="uid://cj406tcbuf4r4" path="res://ui/conf_call/mic.png" id="4_jlhm1"]
@@ -17,6 +18,9 @@
 [ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="12_32qip"]
 [ext_resource type="Texture2D" uid="uid://bylax0rd7oe5m" path="res://ui/conf_call/call_pressed.png" id="12_ycdvu"]
 [ext_resource type="AudioStream" uid="uid://dageghbslaoy7" path="res://ui/conf_call/ring_sound_effect.wav" id="17_jo17q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_duxwk"]
+shader = ExtResource("1_duxwk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
 bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
@@ -627,6 +631,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0lumt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_duxwk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
