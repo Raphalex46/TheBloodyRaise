@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc8gltxst8r8v"]
+[gd_scene load_steps=5 format=3 uid="uid://cc8gltxst8r8v"]
 
 [ext_resource type="PackedScene" uid="uid://c4jiair5xyms8" path="res://ui/conf_call/conf_call.tscn" id="1_5feav"]
 [ext_resource type="PackedScene" uid="uid://v85txct38w0g" path="res://ui/fade_in_out/fade_in_out.tscn" id="1_8n0nl"]
 [ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_c8xcy"]
+
+[sub_resource type="GDScript" id="GDScript_c8xcy"]
+script/source = "extends RichTextLabel
+
+# This is taken directly from the Godot docs:
+
+# This assumes RichTextLabel's `meta_clicked` signal was connected to
+# the function below using the signal connection dialog.
+func _richtextlabel_on_meta_clicked(meta):
+	# `meta` is not guaranteed to be a String, so convert it to a String
+	# to avoid script errors at runtime.
+	OS.shell_open(str(meta))
+"
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -29,7 +42,7 @@ anchor_bottom = 0.7
 offset_left = 5.0
 offset_top = 5.0
 offset_right = -5.0
-offset_bottom = -5.0
+offset_bottom = -5.0000305
 theme = ExtResource("3_c8xcy")
 bbcode_enabled = true
 text = "[font_size=30][center]Thank you for playing![/center][/font_size]
@@ -41,5 +54,18 @@ This game was made by the following people:[/center]
 [ul]
 Morgane Schieber (2D assets)
 Claire Göller (Writing)
-Erwan Auer (Programming & 3D assets)
-Raphaël Colin (Programming & Music)"
+Erwan Auer (Programming & 3D assets) ([url]https://nawreua.itch.io/[/url])
+Raphaël Colin (Programming & Music) ([url]https://raphalex46.github.io/[/url])
+[/ul]
+
+[center]Attributions[/center]
+
+[ul]
+Font:  VCR_OSD_MONO by mrmanet ([url]https://www.1001freefonts.com/vcr-osd-mono.font[/url])
+Boss monster, gun and player sound effects: Survival I by Darkworld Audio[/ul]
+[ul bullet=]
+([url]https://darkworldaudio.itch.io/sound-effects-survival-i[/url])
+[/ul]"
+script = SubResource("GDScript_c8xcy")
+
+[connection signal="meta_clicked" from="RichTextLabel" to="RichTextLabel" method="_richtextlabel_on_meta_clicked"]
