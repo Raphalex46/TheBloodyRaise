@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 # This script's camera movement and player movement logic is heavily inspired

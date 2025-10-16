@@ -136,10 +136,17 @@ func _on_call_panel_call_pressed() -> void:
 		if selected_contact == "Boss":
 			var anim_player = $ConfCameraPanel/ConfCamera/AnimationPlayer
 			anim_player.play("FadeIn")
-			anim_player.animation_finished.connect(func(_name): 
-				$BossCalledSequence.play(), CONNECT_ONE_SHOT
-			)
+			anim_player.animation_finished.connect(_on_boss_called, CONNECT_ONE_SHOT)
 		else:
-				var line = DialogueLine.new("PLAYER", "No response...\nI should really call the boss.")
-				DialogueController.push_dialogue(line)
-				DialogueController.play_queue()
+			var line = DialogueLine.new("PLAYER", "No response...\nI should really call the boss.")
+			DialogueController.push_dialogue(line)
+			DialogueController.play_queue()
+
+func _on_boss_called(_name: String):
+	var sp = SaveCookieController.retrieve_savepoint()
+	if sp == "run4":
+		print("demander webcam")
+		$BossCallSequenceRun4.play()
+	else:
+		$BossCalledSequence.play()
+

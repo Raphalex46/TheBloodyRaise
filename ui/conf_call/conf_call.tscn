@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=45 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
@@ -168,6 +168,41 @@ speaker = "BOSS"
 line = "I thought I made myself clear. I won't negotiate with you. But I will fight you if you insist! I hope you're well prepared."
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
+[sub_resource type="Resource" id="Resource_qnxu7"]
+script = ExtResource("12_32qip")
+run_3 = true
+speaker = "BOSS"
+line = "Phew, nothing like a little fight to get back in shape... Sorry, I didn't see you were online. What's this about?"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_3cr34"]
+script = ExtResource("12_32qip")
+run_3 = true
+speaker = "PLAYER"
+line = "Am I calling at a bad time? I can call back later if you like."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_nhtcl"]
+script = ExtResource("12_32qip")
+run_3 = true
+speaker = "BOSS"
+line = "No, no, it's fine. But tell me why you're calling, don't beat around the bush."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_4qyel"]
+script = ExtResource("12_32qip")
+run_3 = true
+speaker = "PLAYER"
+line = "It's simple, I'm asking you for the reward given to long-serving employees to encourage them to stay even longer in the service of their wealthy company: a pay rise."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_o6y1f"]
+script = ExtResource("12_32qip")
+run_3 = true
+speaker = "BOSS"
+line = "Well, I have a very effective technique for assessing your merit for this pay rise, and luckily, I warmed up earlier."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
 [sub_resource type="GDScript" id="GDScript_32qip"]
 script/source = "extends Node
 
@@ -176,10 +211,21 @@ func callback() -> void:
 	Events.emit_signal(\"unlock_player\")
 "
 
+[sub_resource type="Resource" id="Resource_3wtk6"]
+script = ExtResource("12_32qip")
+run_4 = true
+speaker = "BOSS"
+line = "Well, there's that hopeful smile again. You look tired, though. Let's see how long you can hold out!"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
 [sub_resource type="Resource" id="Resource_llhd5"]
 script = ExtResource("12_32qip")
 run_1 = true
 run_2 = true
+run_3 = true
+run_4 = true
+run_5 = true
+all_runs = true
 speaker = "PLAYER"
 line = "How nerve-wracking it is to call the boss for a raise, but today I've made up my mind, I'm going to ask him."
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
@@ -455,9 +501,15 @@ anchor_right = 0.95
 anchor_bottom = 0.95
 
 [node name="BossCalledSequence" parent="." instance=ExtResource("11_7h6mm")]
-dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_7tivt"), SubResource("Resource_32qip"), SubResource("Resource_acevj"), SubResource("Resource_ycdvu"), SubResource("Resource_dmyxh"), SubResource("Resource_jo17q"), SubResource("Resource_duxwk"), SubResource("Resource_jxuvg"), SubResource("Resource_84rli"), SubResource("Resource_34aqg")])
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_7tivt"), SubResource("Resource_32qip"), SubResource("Resource_acevj"), SubResource("Resource_ycdvu"), SubResource("Resource_dmyxh"), SubResource("Resource_jo17q"), SubResource("Resource_duxwk"), SubResource("Resource_jxuvg"), SubResource("Resource_84rli"), SubResource("Resource_34aqg"), SubResource("Resource_qnxu7"), SubResource("Resource_3cr34"), SubResource("Resource_nhtcl"), SubResource("Resource_4qyel"), SubResource("Resource_o6y1f")])
 
 [node name="Callback" type="Node" parent="BossCalledSequence"]
+script = SubResource("GDScript_32qip")
+
+[node name="BossCallSequenceRun4" parent="." instance=ExtResource("11_7h6mm")]
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_3wtk6")])
+
+[node name="Callback" type="Node" parent="BossCallSequenceRun4"]
 script = SubResource("GDScript_32qip")
 
 [node name="InitialDialogue" parent="." instance=ExtResource("11_7h6mm")]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvlnpkl6ml0jm"]
+
+[ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="1_3j056"]
+[ext_resource type="Script" uid="uid://cjyhjuxyok403" path="res://scenes/game_over/game_over.gd" id="1_vtso4"]
+[ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="2_anb0t"]
+[ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="3_vtso4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqlte"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_anb0t"]
+script = ExtResource("3_vtso4")
+run_1 = true
+run_2 = true
+speaker = "BOSS"
+line = " I've never seen anyone last so little time. You don't deserve your place in this company. You're fired. And don't you dare set foot in here again."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_p1tbv"]
+script = ExtResource("3_vtso4")
+all_runs = true
+line = "Game Over"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_vtso4"]
+script = ExtResource("3_vtso4")
+run_3 = true
+speaker = "BOSS"
+line = "I recognise that way of missing your target... You're a former employee! What did you think? That all you had to do was come back here again and again to get your measly raise?! I won't waste my time with you. "
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="GDScript" id="GDScript_vtso4"]
+script/source = "extends Node
+
+func callback() -> void:
+	print(\"reload the page \")
+"
+
+[sub_resource type="Resource" id="Resource_iqjl0"]
+script = ExtResource("3_vtso4")
+run_4 = true
+speaker = "BOSS"
+line = "You don't seem to understand when I tell you to leave here. We'll go through official channels then."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="GDScript" id="GDScript_p1tbv"]
+script/source = "extends Node
+
+func callback() -> void:
+	print(\"download file\")
+"
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vtso4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pqlte")
+
+[node name="Dialogue" parent="." instance=ExtResource("1_3j056")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.7
+anchor_right = 0.8
+grow_vertical = 0
+
+[node name="GameOver" parent="." instance=ExtResource("2_anb0t")]
+dialogue = Array[ExtResource("3_vtso4")]([SubResource("Resource_anb0t"), SubResource("Resource_p1tbv")])
+
+[node name="GameOverRun3" parent="." instance=ExtResource("2_anb0t")]
+dialogue = Array[ExtResource("3_vtso4")]([SubResource("Resource_vtso4")])
+
+[node name="Callback" type="Node" parent="GameOverRun3"]
+script = SubResource("GDScript_vtso4")
+
+[node name="GameOverRun4" parent="." instance=ExtResource("2_anb0t")]
+dialogue = Array[ExtResource("3_vtso4")]([SubResource("Resource_iqjl0")])
+
+[node name="Callback" type="Node" parent="GameOverRun4"]
+script = SubResource("GDScript_p1tbv")
