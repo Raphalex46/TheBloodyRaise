@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ScreamJam2025"
-run/main_scene="uid://csfmorl58jqyc"
+run/main_scene="uid://bd72q7axcpr7m"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+general/default_playback_type.web=0
 
 [autoload]
 
