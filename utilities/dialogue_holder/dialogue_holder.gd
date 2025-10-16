@@ -6,7 +6,7 @@ extends Node
 
 @onready var dialogue_controller: Node = $"/root/DialogueController"
 
-var savepoint: String
+var savepoint: SaveCookieController.SavePoint = SaveCookieController.SavePoint.RUN1
 
 func _ready() -> void:
 	savepoint = SaveCookieController.retrieve_savepoint()

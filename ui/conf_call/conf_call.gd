@@ -148,15 +148,15 @@ func _on_call_panel_call_pressed() -> void:
 			DialogueController.push_dialogue(line)
 			DialogueController.play_queue()
 
-func _get_sp() -> String:
+func _get_sp() -> SaveCookieController.SavePoint:
 	var sp = SaveCookieController.retrieve_savepoint()
 	return sp
 
 func _boss_union_call() -> bool:
-	return _get_sp() == "run1" and Story.has_talked_to_union
+	return _get_sp() == SaveCookieController.SavePoint.RUN1 and Story.has_talked_to_union
 
 func _on_union_called(_name: String):
-	if _get_sp() == "run1":
+	if _get_sp() == SaveCookieController.SavePoint.RUN1:
 		$UnionCalledSequence.play()
 		Story.has_talked_to_union = true
 	else:
@@ -168,8 +168,8 @@ func _on_boss_called(_name: String):
 	if _boss_union_call():
 		$UnionBossSequence.play()
 	else:
-		if _get_sp() == "run4":
-			print("demander webcam")
+		if _get_sp() == SaveCookieController.SavePoint.RUN4:
+			SaveCookieController.request_webcam()
 			$BossCallSequenceRun4.play()
 		else:
 			$BossCalledSequence.play()
