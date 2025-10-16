@@ -1,5 +1,6 @@
 extends Node
 
+var has_talked_to_union: bool = false
 var game_over_scene: PackedScene = preload("res://scenes/game_over/game_over.tscn")
 
 func _enter_tree() -> void:

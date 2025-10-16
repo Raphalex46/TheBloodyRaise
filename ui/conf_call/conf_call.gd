@@ -106,6 +106,7 @@ var contact_names: Array[String] = [
 @onready var call_panel_label: Label = $ConfCameraPanel/CallPanel/Label
 @onready var call_panel_close_button: TextureButton = $ConfCameraPanel/CallPanel/CloseButton
 @onready var call_panel_call_button: TextureButton = $ConfCameraPanel/CallPanel/CallButton
+@onready var anim_player = $ConfCameraPanel/ConfCamera/AnimationPlayer
 
 var contact_scene = preload("./contact/contact.tscn")
 var selected_contact: String = ""
@@ -133,9 +134,11 @@ func _on_call_panel_close_pressed() -> void:
 func _on_call_panel_call_pressed() -> void:
 	if not DialogueController.is_playing():
 		call_panel.hide()
-		var anim_player = $ConfCameraPanel/ConfCamera/AnimationPlayer
 		if selected_contact == "Boss":
-			anim_player.play("FadeInBoss")
+			if _boss_union_call():
+				anim_player.play("FadeInBossUnion")
+			else:
+				anim_player.play("FadeInBoss")
 			anim_player.animation_finished.connect(_on_boss_called, CONNECT_ONE_SHOT)
 		elif selected_contact == "Luiz Guinn":
 			anim_player.play("FadeInUnion")
@@ -145,14 +148,28 @@ func _on_call_panel_call_pressed() -> void:
 			DialogueController.push_dialogue(line)
 			DialogueController.play_queue()
 
+func _get_sp() -> String:
+	var sp = SaveCookieController.retrieve_savepoint()
+	return sp
+
+func _boss_union_call() -> bool:
+	return _get_sp() == "run1" and Story.has_talked_to_union
+
 func _on_union_called(_name: String):
-	print("union")
+	if _get_sp() == "run1":
+		$UnionCalledSequence.play()
+		Story.has_talked_to_union = true
+	else:
+		$UnionCalledFailedSequence.play()
+	DialogueController.queue_finished.connect(func():
+		anim_player.play("FadeOut"), CONNECT_ONE_SHOT)
 
 func _on_boss_called(_name: String):
-	var sp = SaveCookieController.retrieve_savepoint()
-	if sp == "run4":
-		print("demander webcam")
-		$BossCallSequenceRun4.play()
+	if _boss_union_call():
+		$UnionBossSequence.play()
 	else:
-		$BossCalledSequence.play()
-
+		if _get_sp() == "run4":
+			print("demander webcam")
+			$BossCallSequenceRun4.play()
+		else:
+			$BossCalledSequence.play()

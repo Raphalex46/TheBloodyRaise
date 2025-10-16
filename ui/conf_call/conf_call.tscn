@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=65 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
@@ -87,6 +87,30 @@ tracks/3/keys = {
 "update": 1,
 "values": ["Boss"]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ConfCamera/Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_32qip"]
 resource_name = "FadeInBoss"
@@ -137,6 +161,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Boss"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_dmyxh"]
@@ -189,11 +225,103 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jo17q"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConfCamera:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_duxwk"]
+resource_name = "FadeInBossUnion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConfCamera/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConfCamera/Boss:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ConfCamera/Union:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ConfCamera:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7tivt"]
 _data = {
 &"FadeInBoss": SubResource("Animation_32qip"),
+&"FadeInBossUnion": SubResource("Animation_duxwk"),
 &"FadeInUnion": SubResource("Animation_dmyxh"),
+&"FadeOut": SubResource("Animation_jo17q"),
 &"RESET": SubResource("Animation_7tivt")
 }
 
@@ -355,6 +483,135 @@ speaker = "PLAYER"
 line = "How nerve-wracking it is to call the boss for a raise, but today I've made up my mind, I'm going to ask him."
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
+[sub_resource type="Resource" id="Resource_oi6g8"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "UNION"
+line = "Hey, got a problem with the boss?"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_4j4ua"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "PLAYER"
+line = "I hear you give people a hand when they need to talk to the boss."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_cwjtj"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "UNION"
+line = "You did the right thing calling me, I know the guy. We know he's got some skeletons in his closet, but he keeps them hidden in his office."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_qsuit"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "UNION"
+line = "If you could get your hands on them, he wouldn't be able to refuse you anything. I'll accompany you during the interview; together we should be able to find them."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_an4ux"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "UNION"
+line = "You should call the boss now, I'll join the call."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="GDScript" id="GDScript_dmyxh"]
+script/source = "extends Node
+
+signal union_callback
+
+func callback() -> void:
+	union_callback.emit()
+"
+
+[sub_resource type="Resource" id="Resource_e86b2"]
+script = ExtResource("12_32qip")
+run_2 = true
+run_3 = true
+run_4 = true
+run_5 = true
+speaker = "UNION"
+line = "Hi, need help with management?"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_7d67u"]
+script = ExtResource("12_32qip")
+run_2 = true
+run_3 = true
+run_4 = true
+run_5 = true
+speaker = "PLAYER"
+line = "I hear you give a hand when it comes to talking to Boss."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_4ifry"]
+script = ExtResource("12_32qip")
+run_2 = true
+run_3 = true
+run_4 = true
+run_5 = true
+speaker = "UNION"
+line = "That's true, but you should have called me earlier. I'd like to help you, but unfortunately Mr Boss is a formidable opponent and extremely well trained."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_0vnt4"]
+script = ExtResource("12_32qip")
+run_2 = true
+run_3 = true
+run_4 = true
+run_5 = true
+speaker = "UNION"
+line = "He has honed every argument against you. He would have to forget you even exist for me to be able to do anything, but that's impossible. I prefer to reserve my help for those who still have a chance. I hope you understand."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_bg27f"]
+script = ExtResource("12_32qip")
+run_2 = true
+run_3 = true
+run_4 = true
+run_5 = true
+speaker = "UNION"
+line = "If you ever find a way to make the boss forget about your previous encounters, come back to me."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_35h3d"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "BOSS"
+line = "Did you bring someone with you?"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_cngp7"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "PLAYER"
+line = "Yes, you cannot deny me what I deserve. Bring on the raise!"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_lnmx0"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "BOSS"
+line = "You think your little union can protect you? Haha! I won't give up without a fight."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_aaerd"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "PLAYER"
+line = "Give the money back, Boss!"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_pb7lo"]
+script = ExtResource("12_32qip")
+run_1 = true
+speaker = "UNION"
+line = "Careful, stay focused, this is not the time to get greedy. Remember your goal, find the files! I think they are just behind the chair! "
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
 [node name="ConfCall" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -426,6 +683,7 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="ConfCameraPanel/ConfCamera"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.030000001
@@ -468,6 +726,63 @@ grow_vertical = 2
 texture = ExtResource("5_dmyxh")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BossUnion" type="Control" parent="ConfCameraPanel/ConfCamera"]
+layout_mode = 1
+anchor_left = 0.03
+anchor_right = 0.97
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = -5.0
+
+[node name="Boss" type="TextureRect" parent="ConfCameraPanel/ConfCamera/BossUnion"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 0.45
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ycdvu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ConfCameraPanel/ConfCamera/BossUnion/Boss"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_vertical = 0
+theme = ExtResource("3_eya8e")
+text = "Boss"
+vertical_alignment = 1
+
+[node name="Union" type="TextureRect" parent="ConfCameraPanel/ConfCamera/BossUnion"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_dmyxh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ConfCameraPanel/ConfCamera/BossUnion/Union"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_eya8e")
+text = "Luiz Guinn"
+vertical_alignment = 1
 
 [node name="Buttons" type="Control" parent="ConfCameraPanel/ConfCamera"]
 layout_mode = 1
@@ -655,3 +970,18 @@ script = SubResource("GDScript_32qip")
 [node name="InitialDialogue" parent="." instance=ExtResource("11_7h6mm")]
 dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_llhd5")])
 autoplay = true
+
+[node name="UnionCalledSequence" parent="." instance=ExtResource("11_7h6mm")]
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_oi6g8"), SubResource("Resource_4j4ua"), SubResource("Resource_cwjtj"), SubResource("Resource_qsuit"), SubResource("Resource_an4ux")])
+
+[node name="Callback" type="Node" parent="UnionCalledSequence"]
+script = SubResource("GDScript_dmyxh")
+
+[node name="UnionCalledFailedSequence" parent="." instance=ExtResource("11_7h6mm")]
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_e86b2"), SubResource("Resource_7d67u"), SubResource("Resource_4ifry"), SubResource("Resource_0vnt4"), SubResource("Resource_bg27f")])
+
+[node name="UnionBossSequence" parent="." instance=ExtResource("11_7h6mm")]
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_35h3d"), SubResource("Resource_cngp7"), SubResource("Resource_lnmx0"), SubResource("Resource_aaerd"), SubResource("Resource_pb7lo")])
+
+[node name="Callback" type="Node" parent="UnionBossSequence"]
+script = SubResource("GDScript_32qip")
