@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=27 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
@@ -17,9 +17,9 @@
 atlas = ExtResource("2_lbevp")
 region = Rect2(0, 0, 372, 510)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m0gj2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s3gd"]
 atlas = ExtResource("2_lbevp")
-region = Rect2(0, 0, 372, 510)
+region = Rect2(1116, 0, 372, 510)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d5hj"]
 atlas = ExtResource("2_lbevp")
@@ -28,6 +28,10 @@ region = Rect2(372, 0, 372, 510)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mx21o"]
 atlas = ExtResource("2_lbevp")
 region = Rect2(744, 0, 372, 510)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0gj2"]
+atlas = ExtResource("2_lbevp")
+region = Rect2(0, 0, 372, 510)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jiqs4"]
 animations = [{
@@ -41,7 +45,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m0gj2")
+"texture": SubResource("AtlasTexture_0s3gd")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0d5hj")
@@ -51,6 +55,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0d5hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0gj2")
 }],
 "loop": false,
 "name": &"shooting",
