@@ -19,6 +19,7 @@ extends CharacterBody3D
 
 @onready var camera : Camera3D = $Camera # Camera node
 @onready var weapon : AnimatedSprite3D = $Camera/Weapon # Weapon node
+@onready var anim_player: AnimationPlayer = $Camera/AnimationPlayer
 
 signal shot_fired(hit_position)
 signal presence_declared(node)
@@ -33,6 +34,7 @@ func _enter_tree() -> void:
 		# Subscribe to the lock / unlock events
 	Events.lock_player.connect(_on_player_lock)
 	Events.unlock_player.connect(_on_player_unlock)
+	Events.start_player_animation.connect(_on_start_player_animation)
 
 func _ready() -> void:
 	# Capture the mouse for FPS movements
@@ -140,3 +142,8 @@ func _on_player_lock() -> void:
 
 func _on_player_unlock() -> void:
 	locked = false
+
+func _on_start_player_animation(callback: Callable) -> void:
+	anim_player.play("PCLookAway")
+	await anim_player.animation_finished
+	callback.call()
