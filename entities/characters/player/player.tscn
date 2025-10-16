@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=14 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
 [ext_resource type="Script" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
 [ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/crosshair.png" id="4_a3s12"]
-[ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="4_lbevp"]
 [ext_resource type="Script" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3s12"]
@@ -87,7 +86,6 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 top_level = true
 visible = false
 billboard = 2
-texture = ExtResource("4_lbevp")
 script = ExtResource("4_wqnow")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Bullet"]

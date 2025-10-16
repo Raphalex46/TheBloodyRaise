@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b23rocar8sgx7"
-path.s3tc="res://.godot/imported/monster_manager_379_510.png-f64df1da282fd39d2bfb6c0874af3d94.s3tc.ctex"
+uid="uid://buxfng5517qir"
+path.s3tc="res://.godot/imported/fireball.png-ed6be4adbe6f1a2fc2d22b5b35543440.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/characters/boss/monster_manager_379_510.png"
-dest_files=["res://.godot/imported/monster_manager_379_510.png-f64df1da282fd39d2bfb6c0874af3d94.s3tc.ctex"]
+source_file="res://entities/characters/boss/fireball/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-ed6be4adbe6f1a2fc2d22b5b35543440.s3tc.ctex"]
 
 [params]
 

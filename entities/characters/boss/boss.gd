@@ -21,9 +21,10 @@ func take_damage(dmg: int) -> void:
 func _physics_process(delta: float) -> void:
 	# If target locked in
 	if target != null:
-		if _fireball_available:
+		if _fireball_available and $Sprite3D.animation != &"hit":
 			_fireball_available = false
 			$Fireball.launch(target.global_position)
+			$Sprite3D.play(&"fireball")
 		velocity = _chase(delta, target.global_position)
 	move_and_slide()
 
