@@ -37,13 +37,6 @@ func _enter_tree() -> void:
 	Events.prepare_player_animation.connect(_on_prepare_player_animation)
 	Events.start_player_animation.connect(_on_start_player_animation)
 
-func _ready() -> void:
-	# Capture the mouse for FPS movements
-	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	# TEMP: Signal his presence to everybody
-	presence_declared.emit(self)
-
 # Handle mouse motion inputs
 func _unhandled_input(event: InputEvent) -> void:
 	if locked:

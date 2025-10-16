@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bd72q7axcpr7m"]
+[gd_scene load_steps=26 format=3 uid="uid://bd72q7axcpr7m"]
 
 [ext_resource type="PackedScene" uid="uid://tk0n1i5iben6" path="res://ui/hud/hud.tscn" id="1_ql6sr"]
 [ext_resource type="Texture2D" uid="uid://wa6vbqiokghf" path="res://textures/floor_texture.jpg" id="2_llti7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwy85pbbd8pl8" path="res://models/desktop/desktop.tscn" id="8_2u0tt"]
 [ext_resource type="PackedScene" uid="uid://c205xryfj4avx" path="res://models/chair/chair.tscn" id="9_sf0ao"]
 [ext_resource type="PackedScene" uid="uid://stf3gftd6ain" path="res://models/table/table.tscn" id="10_b6q11"]
+[ext_resource type="Script" uid="uid://d27kx6d4okct0" path="res://scenes/office/detection_area.gd" id="11_41xxe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_art4y"]
 albedo_texture = ExtResource("5_66du1")
@@ -52,6 +53,9 @@ data = PackedVector3Array(-2.775404, -4.712967, 0.3105, -2.775404, -4.712967, -0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dml3y"]
 data = PackedVector3Array(-0.8811102, -4.712967, 0.3105, -0.8811102, -4.712967, -0.3105, -0.8811102, 4.712967, -0.3105, 0.8811102, -4.712967, -0.3105, -0.8811102, -4.712967, -0.3105, -0.8811102, -4.712967, 0.3105, -0.8811102, 4.712967, -0.3105, -0.8811102, -4.712967, -0.3105, 0.8811102, -4.712967, -0.3105, -0.8811102, 4.712967, -0.3105, -0.8811102, 4.712967, 0.3105, -0.8811102, -4.712967, 0.3105, -0.8811102, -4.712967, 0.3105, -0.8811102, 4.712967, 0.3105, 0.8811102, 4.712967, 0.3105, 0.8811102, 4.712967, 0.3105, -0.8811102, 4.712967, 0.3105, -0.8811102, 4.712967, -0.3105, -0.8811102, -4.712967, 0.3105, 0.8811102, -4.712967, 0.3105, 0.8811102, -4.712967, -0.3105, 0.8811102, 4.712967, 0.3105, 0.8811102, -4.712967, 0.3105, -0.8811102, -4.712967, 0.3105, 0.8811102, -4.712967, -0.3105, 0.8811102, -4.712967, 0.3105, 0.8811102, 4.712967, 0.3105, 0.8811102, -4.712967, -0.3105, 0.8811102, 4.712967, -0.3105, -0.8811102, 4.712967, -0.3105, -0.8811102, 4.712967, -0.3105, 0.8811102, 4.712967, -0.3105, 0.8811102, 4.712967, 0.3105, 0.8811102, 4.712967, 0.3105, 0.8811102, 4.712967, -0.3105, 0.8811102, -4.712967, -0.3105)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6q11"]
+size = Vector3(1.3513184, 1.4643555, 3.265564)
 
 [node name="Office" type="Node3D"]
 
@@ -251,7 +255,30 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 31.5
 [node name="Desktop2" parent="Models/Desk2" instance=ExtResource("8_2u0tt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46260643, 1.6577256, -0.613245)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.238943, 4.4684725, 8.615291)
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.041316, 4.630977)
+omni_range = 8.8409395
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.041316, -3.7628093)
+omni_range = 8.8409395
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1121073, 9.041316, -0.009786129)
+omni_range = 8.8409395
+
+[node name="Detection Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.151475, 0, 7.548608)
+script = ExtResource("11_41xxe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.056274414, 0.23217773, 0.06826782)
+shape = SubResource("BoxShape3D_b6q11")
+
 [connection signal="presence_declared" from="Player" to="Boss" method="_on_player_presence_declared"]
+[connection signal="body_entered" from="Detection Area" to="Detection Area" method="_on_body_entered"]
