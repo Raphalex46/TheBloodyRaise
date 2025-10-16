@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://csfmorl58jqyc"]
+[gd_scene load_steps=8 format=3 uid="uid://csfmorl58jqyc"]
 
 [ext_resource type="PackedScene" uid="uid://dxusiga1lv2ty" path="res://entities/characters/player/player.tscn" id="1_7b2vw"]
 [ext_resource type="PackedScene" uid="uid://tk0n1i5iben6" path="res://ui/hud/hud.tscn" id="2_llhd5"]
@@ -9,6 +9,19 @@ data = PackedVector3Array(-0.5, -0.04321289, 0.5, -0.5, -0.04321289, -0.5, -0.5,
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8gada"]
 data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
+
+[sub_resource type="GDScript" id="GDScript_jjpcp"]
+script/source = "extends Area3D
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+	
+func _on_body_entered(body: Node3D) -> void:
+	if body is Player:
+		Events.emit_signal(\"player_dead\")
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jjpcp"]
 
 [node name="PlayerBossTest" type="Node3D"]
 
@@ -42,3 +55,11 @@ omni_range = 77.875
 
 [node name="Boss" parent="." instance=ExtResource("2_t62pw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3267226, 1.4086034, -0.5028477)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4065044, -0.64506346, -4.178738)
+script = SubResource("GDScript_jjpcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.023893774, 0)
+shape = SubResource("SphereShape3D_jjpcp")
