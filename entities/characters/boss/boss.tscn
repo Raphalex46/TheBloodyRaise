@@ -51,9 +51,11 @@ height = 5.118561
 
 [node name="Boss" type="CharacterBody3D"]
 script = ExtResource("1_i8oec")
+speed = 2.5
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
 billboard = 2
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_nlg1p")
 autoplay = "default"
