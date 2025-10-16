@@ -98,6 +98,7 @@ func handle_detection():
 # Allows the player to take damage
 func take_damage(damage: int):
 	health -= damage
+	$HurtSoundEffect.play()
 	if health <= 0:
 		Events.player_dead.emit()
 
