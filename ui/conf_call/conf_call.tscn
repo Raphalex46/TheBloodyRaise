@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=67 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="11_7h6mm"]
 [ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="12_32qip"]
 [ext_resource type="Texture2D" uid="uid://bylax0rd7oe5m" path="res://ui/conf_call/call_pressed.png" id="12_ycdvu"]
+[ext_resource type="AudioStream" uid="uid://dageghbslaoy7" path="res://ui/conf_call/ring_sound_effect.wav" id="17_jo17q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
 bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
@@ -991,3 +992,7 @@ dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_35h3d"), SubRes
 
 [node name="Callback" type="Node" parent="UnionBossSequence"]
 script = SubResource("GDScript_32qip")
+
+[node name="RingSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_jo17q")
+volume_db = 2.0
