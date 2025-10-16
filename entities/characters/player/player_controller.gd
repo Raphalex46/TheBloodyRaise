@@ -92,6 +92,9 @@ func _shoot():
 		if result.collider.has_method(&"take_damage"):
 			result.collider.take_damage(weapon_damage)
 
+func handle_detection():
+	presence_declared.emit($CollisionShape3D)
+
 # Allows the player to take damage
 func take_damage(damage: int):
 	health -= damage
@@ -113,6 +116,15 @@ func _walk(delta: float) -> Vector3:
 	# Forward is always the direction the camera is pointing towards
 	var _forward: Vector3 = camera.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
+	if walk_dir != Vector3.ZERO:
+		if randi() % 8 == 0:
+			if not $Footstep1.playing:
+				$Footstep1.pitch_scale = randf_range(1.0, 1.05)
+				$Footstep1.play()
+		elif randi() % 8 == 0:
+			if not $Footstep2.playing:
+				$Footstep1.pitch_scale = randf_range(1.0, 1.05)
+				$Footstep2.play()
 	walk_vel = walk_vel.move_toward(walk_dir * speed, acceleration * delta)
 	return walk_vel
 

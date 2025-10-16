@@ -1,7 +1,8 @@
-extends Sprite3D
+extends AnimatedSprite3D
 
 func _handle_shot(hit_position: Variant) -> void:
 	global_position = hit_position
+	play("bullet_%d" % randi_range(1, 4))
 	visible = true
 	await get_tree().create_timer(0.5).timeout
 	queue_free()

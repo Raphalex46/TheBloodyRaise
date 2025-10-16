@@ -6,4 +6,4 @@
 
 **Sound effects**
 
-- gunshot__high_1.wav by eardeer -- https://freesound.org/s/402010/ -- License: Attribution 4.0
+- Sounds Effects - Survival I by Darkworld Audio (https://darkworldaudio.itch.io/sound-effects-survival-i)

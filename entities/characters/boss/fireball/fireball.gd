@@ -18,6 +18,7 @@ func launch(target: Vector3):
 	top_level = true
 	_velocity = global_position.direction_to(target).normalized() * speed
 	$Timer.start()
+	$AudioStreamPlayer.play()
 
 func _physics_process(delta: float) -> void:
 	if _launched:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c54isb5yn42fd"]
+[gd_scene load_steps=7 format=3 uid="uid://c54isb5yn42fd"]
 
 [ext_resource type="Script" uid="uid://cvianqy5atxfb" path="res://entities/characters/boss/fireball/fireball.gd" id="1_6fng2"]
 [ext_resource type="Texture2D" uid="uid://buxfng5517qir" path="res://entities/characters/boss/fireball/fireball.png" id="2_6fng2"]
+[ext_resource type="AudioStream" uid="uid://dggcngivk6hr0" path="res://entities/characters/boss/fireball/EXT_MatchLight1.wav" id="3_qyy2o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6fng2"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -40,6 +41,10 @@ spread = 180.0
 flatness = 1.0
 initial_velocity_min = 7.5
 initial_velocity_max = 7.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qyy2o")
+volume_db = -15.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
