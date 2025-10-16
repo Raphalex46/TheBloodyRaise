@@ -411,11 +411,11 @@ stream = ExtResource("6_a3s12")
 
 [node name="Footstep1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_0d5hj")
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="Footstep2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_mx21o")
-volume_db = -15.0
+volume_db = -10.0
 
 [connection signal="shot_fired" from="." to="Bullet" method="_on_player_shot_fired"]
 [connection signal="animation_finished" from="Camera/Weapon" to="Camera/Weapon" method="_on_animation_finished"]
