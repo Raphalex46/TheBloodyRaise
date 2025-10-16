@@ -250,7 +250,21 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 31.5
 [node name="Desktop2" parent="Models/Desk2" instance=ExtResource("8_2u0tt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46260643, 1.6577256, -0.613245)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.238943, 4.4684725, 8.615291)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.041316, 4.630977)
+omni_range = 8.8409395
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.041316, -3.7628093)
+omni_range = 8.8409395
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1121073, 9.041316, -0.009786129)
+omni_range = 8.8409395
 
 [connection signal="presence_declared" from="Player" to="Boss" method="_on_player_presence_declared"]
