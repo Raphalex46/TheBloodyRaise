@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buxfng5517qir"
-path.s3tc="res://.godot/imported/fireball.png-ed6be4adbe6f1a2fc2d22b5b35543440.s3tc.ctex"
+uid="uid://dxjokq6i7nywl"
+path.s3tc="res://.godot/imported/fireball_sprite.png-8b68651ceca02e481ffadfd7f82859a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/characters/boss/fireball/fireball.png"
-dest_files=["res://.godot/imported/fireball.png-ed6be4adbe6f1a2fc2d22b5b35543440.s3tc.ctex"]
+source_file="res://entities/characters/boss/fireball/fireball_sprite.png"
+dest_files=["res://.godot/imported/fireball_sprite.png-8b68651ceca02e481ffadfd7f82859a7.s3tc.ctex"]
 
 [params]
 
