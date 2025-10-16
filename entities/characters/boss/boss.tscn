@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b23rocar8sgx7" path="res://entities/characters/boss/monster_manager_344_500.png" id="2_22cnm"]
 [ext_resource type="PackedScene" uid="uid://c54isb5yn42fd" path="res://entities/characters/boss/fireball/fireball.tscn" id="3_22cnm"]
 [ext_resource type="Texture2D" uid="uid://bt5u4np3xqtm0" path="res://entities/characters/boss/monster_manager_attack_344_500.png" id="3_f8f6o"]
-[ext_resource type="Script" path="res://entities/characters/boss/sprite_3d_boss.gd" id="3_w30el"]
+[ext_resource type="Script" uid="uid://dh5wdy4kfqfvm" path="res://entities/characters/boss/sprite_3d_boss.gd" id="3_w30el"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlg1p"]
 animations = [{
