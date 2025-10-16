@@ -8,6 +8,7 @@ signal queue_finished()
 
 var dialogue_queue: Array[DialogueLine] # A queue of dialogue lines
 var play_count: int = 0 # Number of dialogue lines to play
+var playing: bool
 
 # Send signal for the dialogue
 func _play_dialogue(line: DialogueLine):
@@ -18,18 +19,20 @@ func dialogue_finished() -> void:
 	play_count -= 1
 	if dialogue_queue.is_empty() or play_count <= 0:
 		emit_signal(&"queue_finished")
+		playing = false
 		return
 	else:
 		_play_dialogue(dialogue_queue.pop_front())
 
 # Push dialogue in the dialogue queue
 func push_dialogue(line: DialogueLine) -> void:
+	play_count += 1
 	dialogue_queue.push_back(line)
 
 func play_queue() -> void:
-	play_count = dialogue_queue.size()
-	if play_count != 0:
+	if play_count != 0 and not playing:
 		_play_dialogue(dialogue_queue.pop_front())
+		playing = true
 
 func is_playing() -> bool:
 	return play_count > 0
