@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxusiga1lv2ty"]
+[gd_scene load_steps=17 format=3 uid="uid://dxusiga1lv2ty"]
 
 [ext_resource type="Script" uid="uid://bydlk6tr3yusg" path="res://entities/characters/player/player_controller.gd" id="1_jiqs4"]
 [ext_resource type="Texture2D" uid="uid://c7u6ytw28g8pb" path="res://entities/characters/player/weapon.png" id="2_lbevp"]
@@ -200,6 +200,7 @@ fov = 20.0
 [node name="Weapon" type="AnimatedSprite3D" parent="Camera"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.09014857, -0.17977798, -0.49287897)
 visible = false
+shaded = true
 sprite_frames = SubResource("SpriteFrames_jiqs4")
 script = ExtResource("3_qrd5i")
 
