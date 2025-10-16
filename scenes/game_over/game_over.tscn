@@ -64,7 +64,7 @@ You can take your things and get out of here. Go on! We don't want to see you ag
 
 Boss.
 
-Post Scriptum: We are required by law to inform you of your right to a meeting with your union representative in the event of a dispute. Contact: *email address with the name of the union*\", \"notice_of_termination.txt\")
+Post Scriptum: We are required by law to inform you of your right to a meeting with your union representative in the event of a dispute. Contact: luiz.guinn@family-startup.com\", \"notice_of_termination.txt\")
 "
 
 [node name="GameOver" type="Control"]
