@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dggcngivk6hr0"
-path="res://.godot/imported/MatchLight1.wav-59fba6783d8f298ad74163adbc1fa29c.sample"
+path="res://.godot/imported/EXT_MatchLight1.wav-31006f33050b67915f8d1efbdc8bc001.sample"
 
 [deps]
 
-source_file="res://entities/characters/boss/fireball/MatchLight1.wav"
-dest_files=["res://.godot/imported/MatchLight1.wav-59fba6783d8f298ad74163adbc1fa29c.sample"]
+source_file="res://entities/characters/boss/fireball/EXT_MatchLight1.wav"
+dest_files=["res://.godot/imported/EXT_MatchLight1.wav-31006f33050b67915f8d1efbdc8bc001.sample"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvianqy5atxfb" path="res://entities/characters/boss/fireball/fireball.gd" id="1_6fng2"]
 [ext_resource type="Texture2D" uid="uid://buxfng5517qir" path="res://entities/characters/boss/fireball/fireball.png" id="2_6fng2"]
-[ext_resource type="AudioStream" uid="uid://dggcngivk6hr0" path="res://entities/characters/boss/fireball/MatchLight1.wav" id="3_qyy2o"]
+[ext_resource type="AudioStream" uid="uid://dggcngivk6hr0" path="res://entities/characters/boss/fireball/EXT_MatchLight1.wav" id="3_qyy2o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6fng2"]
 size = Vector3(0.5, 0.5, 0.5)

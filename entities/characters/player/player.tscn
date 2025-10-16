@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://entities/characters/player/weapon.gd" id="3_qrd5i"]
 [ext_resource type="Texture2D" uid="uid://dk162lvggn1ve" path="res://entities/characters/player/crosshair.png" id="4_a3s12"]
 [ext_resource type="Script" path="res://entities/characters/player/bullet.gd" id="4_wqnow"]
-[ext_resource type="AudioStream" uid="uid://ceru86dr476rj" path="res://entities/characters/player/DesignedGunshot_Pistol1_Reverb.wav" id="6_a3s12"]
-[ext_resource type="AudioStream" uid="uid://b8wdkgr167vol" path="res://entities/characters/player/FootstepsConcrete2.wav" id="7_0d5hj"]
-[ext_resource type="AudioStream" uid="uid://ouictu63lbrx" path="res://entities/characters/player/FootstepsConcrete3.wav" id="8_mx21o"]
+[ext_resource type="AudioStream" uid="uid://ceru86dr476rj" path="res://entities/characters/player/EXT_DesignedGunshot_Pistol1_Reverb.wav" id="6_a3s12"]
+[ext_resource type="AudioStream" uid="uid://b8wdkgr167vol" path="res://entities/characters/player/EXT_FootstepsConcrete2.wav" id="7_0d5hj"]
+[ext_resource type="AudioStream" uid="uid://ouictu63lbrx" path="res://entities/characters/player/EXT_FootstepsConcrete3.wav" id="8_mx21o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3s12"]
 atlas = ExtResource("2_lbevp")
