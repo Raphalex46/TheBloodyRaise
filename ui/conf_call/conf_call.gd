@@ -107,6 +107,7 @@ var contact_names: Array[String] = [
 @onready var call_panel_close_button: TextureButton = $ConfCameraPanel/CallPanel/CloseButton
 @onready var call_panel_call_button: TextureButton = $ConfCameraPanel/CallPanel/CallButton
 @onready var anim_player = $ConfCameraPanel/ConfCamera/AnimationPlayer
+@onready var ring_sound_effect = $RingSoundEffect
 
 var contact_scene = preload("./contact/contact.tscn")
 var selected_contact: String = ""
@@ -134,6 +135,8 @@ func _on_call_panel_close_pressed() -> void:
 func _on_call_panel_call_pressed() -> void:
 	if not DialogueController.is_playing():
 		call_panel.hide()
+		ring_sound_effect.play()
+		await ring_sound_effect.finished
 		if selected_contact == "Boss":
 			if _boss_union_call():
 				anim_player.play("FadeInBossUnion")
