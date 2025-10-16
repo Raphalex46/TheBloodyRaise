@@ -18,8 +18,8 @@ func _play_dialogue(line: DialogueLine):
 func dialogue_finished() -> void:
 	play_count -= 1
 	if dialogue_queue.is_empty() or play_count <= 0:
-		emit_signal(&"queue_finished")
 		playing = false
+		emit_signal(&"queue_finished")
 		return
 	else:
 		_play_dialogue(dialogue_queue.pop_front())

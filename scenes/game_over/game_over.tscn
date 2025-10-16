@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvlnpkl6ml0jm"]
+[gd_scene load_steps=13 format=3 uid="uid://cvlnpkl6ml0jm"]
 
 [ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="1_3j056"]
 [ext_resource type="Script" uid="uid://cjyhjuxyok403" path="res://scenes/game_over/game_over.gd" id="1_vtso4"]
@@ -13,12 +13,22 @@ script = ExtResource("3_vtso4")
 run_1 = true
 run_2 = true
 speaker = "BOSS"
-line = " I've never seen anyone last so little time. You don't deserve your place in this company. You're fired. And don't you dare set foot in here again."
+line = "I've never seen anyone last so little time. You don't deserve your place in this company. You're fired. And don't you dare set foot in here again."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_3mpp1"]
+script = ExtResource("3_vtso4")
+run_5 = true
+speaker = "BOSS"
+line = "You're stubborn, aren't you? Didn't you receive that letter? You are fired, don't come here again."
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
 [sub_resource type="Resource" id="Resource_p1tbv"]
 script = ExtResource("3_vtso4")
-all_runs = true
+run_1 = true
+run_2 = true
+run_4 = true
+run_5 = true
 line = "Game Over"
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
@@ -33,7 +43,7 @@ metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 script/source = "extends Node
 
 func callback() -> void:
-	print(\"reload the page \")
+	SaveCookieController.reload_page()
 "
 
 [sub_resource type="Resource" id="Resource_iqjl0"]
@@ -47,7 +57,14 @@ metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 script/source = "extends Node
 
 func callback() -> void:
-	print(\"download file\")
+	SaveCookieController.download_file(\"Dear Sir or Madam,
+Following our meeting, we hereby notify you of your dismissal for the following reason: you shoot like shit / You're too slow / Disagreement incompatible with the continuation of the exercise / Inability to perform your duties / Ugly face / The boss doesn't like you,  effective immediately.\\n
+You will receive no notice period whatsoever and your final salary will be paid without any increase whatsoever and with delay. 
+You can take your things and get out of here. Go on! We don't want to see you again. Come on, even the photo of your dog has to go. Chop chop.
+
+Boss.
+
+Post Scriptum: We are required by law to inform you of your right to a meeting with your union representative in the event of a dispute. Contact: *email address with the name of the union*\", \"notice_of_termination.txt\")
 "
 
 [node name="GameOver" type="Control"]
@@ -77,7 +94,7 @@ anchor_right = 0.8
 grow_vertical = 0
 
 [node name="GameOver" parent="." instance=ExtResource("2_anb0t")]
-dialogue = Array[ExtResource("3_vtso4")]([SubResource("Resource_anb0t"), SubResource("Resource_p1tbv")])
+dialogue = Array[ExtResource("3_vtso4")]([SubResource("Resource_anb0t"), SubResource("Resource_3mpp1"), SubResource("Resource_p1tbv")])
 
 [node name="GameOverRun3" parent="." instance=ExtResource("2_anb0t")]
 dialogue = Array[ExtResource("3_vtso4")]([SubResource("Resource_vtso4")])

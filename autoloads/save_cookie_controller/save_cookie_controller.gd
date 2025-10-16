@@ -2,19 +2,30 @@ extends Node
 
 # A global controller designed to handle cookie save and manipulation
 
-@export var stub_mode: bool
-@export var stub_savepoint: String
+enum SavePoint {
+	RUN1 = 1,
+	RUN2 = 2,
+	RUN3 = 3,
+	RUN4 = 4,
+	RUN5 = 5
+	}
 
-var savepoint: String = &"run1"
+@export var stub_mode: bool
+@export var stub_savepoint: SavePoint = SavePoint.RUN1
+
+var savepoint: SavePoint = SavePoint.RUN1
 const SAVEPOINT_NAME: String = &"save_data"
 
-func retrieve_savepoint() -> String:
+func next_savepoint() -> SavePoint:
+	return (int(retrieve_savepoint()) + 1) as SavePoint
+
+func retrieve_savepoint() -> SavePoint:
 	if stub_mode:
 		return stub_savepoint
 	else:
 		return savepoint
 
-func set_savepoint(new_savepoint: String):
+func set_savepoint(new_savepoint: SavePoint):
 	if stub_mode:
 		stub_savepoint = new_savepoint
 	else:
@@ -66,4 +77,4 @@ func _ready() -> void:
 		var cookies: PackedStringArray = document.cookie.split("; ")
 		for cookie in cookies:
 			if cookie.begins_with(SAVEPOINT_NAME):
-				savepoint = cookie.get_slice("=", 1)
+				savepoint = int(cookie.get_slice("=", 1)) as SavePoint

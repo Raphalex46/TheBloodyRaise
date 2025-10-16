@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=66 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
 [ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
@@ -36,81 +36,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="Animation" id="Animation_7tivt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ConfCamera:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ConfCamera/Boss:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ConfCamera/Union:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ConfCamera/Label:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Boss"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ConfCamera/Label:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ConfCamera/BossUnion:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_32qip"]
 resource_name = "FadeInBoss"
@@ -173,6 +98,69 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_duxwk"]
+resource_name = "FadeInBossUnion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ConfCamera/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConfCamera/Boss:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ConfCamera/Union:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ConfCamera:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dmyxh"]
@@ -253,19 +241,19 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_duxwk"]
-resource_name = "FadeInBossUnion"
+[sub_resource type="Animation" id="Animation_7tivt"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ConfCamera/Label:visible")
+tracks/0/path = NodePath("ConfCamera:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -277,7 +265,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -294,26 +282,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/3/path = NodePath("ConfCamera/Label:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": ["Boss"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ConfCamera:modulate")
+tracks/4/path = NodePath("ConfCamera/Label:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ConfCamera/BossUnion:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7tivt"]
@@ -454,6 +454,13 @@ script = ExtResource("12_32qip")
 run_3 = true
 speaker = "BOSS"
 line = "Well, I have a very effective technique for assessing your merit for this pay rise, and luckily, I warmed up earlier."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_cnsuf"]
+script = ExtResource("12_32qip")
+run_5 = true
+speaker = "BOSS"
+line = "You again... I thought I was clear, there will be no raise."
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
 [sub_resource type="GDScript" id="GDScript_32qip"]
@@ -956,7 +963,7 @@ anchor_right = 0.95
 anchor_bottom = 0.95
 
 [node name="BossCalledSequence" parent="." instance=ExtResource("11_7h6mm")]
-dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_7tivt"), SubResource("Resource_32qip"), SubResource("Resource_acevj"), SubResource("Resource_ycdvu"), SubResource("Resource_dmyxh"), SubResource("Resource_jo17q"), SubResource("Resource_duxwk"), SubResource("Resource_jxuvg"), SubResource("Resource_84rli"), SubResource("Resource_34aqg"), SubResource("Resource_qnxu7"), SubResource("Resource_3cr34"), SubResource("Resource_nhtcl"), SubResource("Resource_4qyel"), SubResource("Resource_o6y1f")])
+dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_7tivt"), SubResource("Resource_32qip"), SubResource("Resource_acevj"), SubResource("Resource_ycdvu"), SubResource("Resource_dmyxh"), SubResource("Resource_jo17q"), SubResource("Resource_duxwk"), SubResource("Resource_jxuvg"), SubResource("Resource_84rli"), SubResource("Resource_34aqg"), SubResource("Resource_qnxu7"), SubResource("Resource_3cr34"), SubResource("Resource_nhtcl"), SubResource("Resource_4qyel"), SubResource("Resource_o6y1f"), SubResource("Resource_cnsuf")])
 
 [node name="Callback" type="Node" parent="BossCalledSequence"]
 script = SubResource("GDScript_32qip")
