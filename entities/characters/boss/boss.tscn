@@ -1,39 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bngn2d8kyo3lx"]
+[gd_scene load_steps=6 format=3 uid="uid://bngn2d8kyo3lx"]
 
 [ext_resource type="Script" uid="uid://2lg2gvua08a1" path="res://entities/characters/boss/boss.gd" id="1_i8oec"]
-[ext_resource type="Texture2D" uid="uid://dbrmphttkbcpd" path="res://entities/characters/boss/EXT_andromalius-57x88.png" id="1_y31no"]
+[ext_resource type="Texture2D" uid="uid://b23rocar8sgx7" path="res://entities/characters/boss/monster_manager_379_510.png" id="2_22cnm"]
 [ext_resource type="PackedScene" uid="uid://c54isb5yn42fd" path="res://entities/characters/boss/fireball/fireball.tscn" id="3_22cnm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8oec"]
-atlas = ExtResource("1_y31no")
-region = Rect2(228, 176, 57, 88)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_22cnm"]
-atlas = ExtResource("1_y31no")
-region = Rect2(285, 176, 57, 88)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w30el"]
-atlas = ExtResource("1_y31no")
-region = Rect2(342, 176, 57, 88)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8f6o"]
-atlas = ExtResource("1_y31no")
-region = Rect2(399, 176, 57, 88)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlg1p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i8oec")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_22cnm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w30el")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f8f6o")
+"texture": ExtResource("2_22cnm")
 }],
 "loop": true,
 "name": &"default",
@@ -48,7 +23,6 @@ height = 3.3325195
 script = ExtResource("1_i8oec")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_nlg1p")
