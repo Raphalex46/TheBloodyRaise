@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc8gltxst8r8v"]
+
+[ext_resource type="PackedScene" uid="uid://c4jiair5xyms8" path="res://ui/conf_call/conf_call.tscn" id="1_5feav"]
+[ext_resource type="PackedScene" uid="uid://v85txct38w0g" path="res://ui/fade_in_out/fade_in_out.tscn" id="1_8n0nl"]
+[ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_c8xcy"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FadeInOut" parent="." instance=ExtResource("1_8n0nl")]
+autoplay = "FadeIn"
+
+[node name="ConfCall" parent="." instance=ExtResource("1_5feav")]
+process_mode = 4
+layout_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.7
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+theme = ExtResource("3_c8xcy")
+bbcode_enabled = true
+text = "[font_size=30][center]Thank you for playing![/center][/font_size]
+
+[center]
+This game was made by the following people:[/center]
+
+
+[ul]
+Morgane Schieber (2D assets)
+Claire Göller (Writing)
+Erwan Auer (Programming & 3D assets)
+Raphaël Colin (Programming)"

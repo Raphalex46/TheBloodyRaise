@@ -616,7 +616,7 @@ metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 script = ExtResource("12_32qip")
 run_1 = true
 speaker = "UNION"
-line = "Careful, stay focused, this is not the time to get greedy. Remember your goal, find the files! I think they are just behind the chair! "
+line = "Careful, stay focused, this is not the time to get greedy. Remember your goal, find the files! I think they are on his work computer, on his desk!"
 metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
 
 [node name="ConfCall" type="Control"]
@@ -976,7 +976,6 @@ script = SubResource("GDScript_32qip")
 
 [node name="InitialDialogue" parent="." instance=ExtResource("11_7h6mm")]
 dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_llhd5")])
-autoplay = true
 
 [node name="UnionCalledSequence" parent="." instance=ExtResource("11_7h6mm")]
 dialogue = Array[ExtResource("12_32qip")]([SubResource("Resource_oi6g8"), SubResource("Resource_4j4ua"), SubResource("Resource_cwjtj"), SubResource("Resource_qsuit"), SubResource("Resource_an4ux")])

@@ -34,8 +34,11 @@ func _apply_mode() -> void:
 			hud.disabled = true
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			Events.emit_signal("lock_player")
+			conf_call.launch_initial_dialogue()
 		Mode.HUD:
 			conf_call.process_mode = Node.PROCESS_MODE_DISABLED
 			conf_call.hide()
+			conf_call.disable_dialogue()
+			hud.disabled = false
 			hud.process_mode = Node.PROCESS_MODE_INHERIT
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

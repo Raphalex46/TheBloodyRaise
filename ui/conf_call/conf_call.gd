@@ -176,3 +176,9 @@ func _on_boss_called(_name: String):
 			$BossCallSequenceRun4.play()
 		else:
 			$BossCalledSequence.play()
+
+func disable_dialogue() -> void:
+	$Dialogue.disabled = true
+
+func launch_initial_dialogue() -> void:
+	$InitialDialogue.play()

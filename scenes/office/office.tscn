@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bd72q7axcpr7m"]
+[gd_scene load_steps=38 format=3 uid="uid://bd72q7axcpr7m"]
 
 [ext_resource type="PackedScene" uid="uid://tk0n1i5iben6" path="res://ui/hud/hud.tscn" id="1_ql6sr"]
 [ext_resource type="Texture2D" uid="uid://wa6vbqiokghf" path="res://textures/floor_texture.jpg" id="2_llti7"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://c205xryfj4avx" path="res://models/chair/chair.tscn" id="9_sf0ao"]
 [ext_resource type="PackedScene" uid="uid://stf3gftd6ain" path="res://models/table/table.tscn" id="10_b6q11"]
 [ext_resource type="Script" uid="uid://d27kx6d4okct0" path="res://scenes/office/detection_area.gd" id="11_41xxe"]
+[ext_resource type="Script" uid="uid://dbx08upajg7n7" path="res://scenes/office/win_trigger.gd" id="12_e1yc2"]
+[ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="13_y3s53"]
+[ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="14_p8n5g"]
+[ext_resource type="Script" uid="uid://1el3k4k7hwkc" path="res://scenes/office/callback.gd" id="15_yexkw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_art4y"]
 albedo_texture = ExtResource("5_66du1")
@@ -57,10 +61,61 @@ data = PackedVector3Array(-0.8811102, -4.712967, 0.3105, -0.8811102, -4.712967, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6q11"]
 size = Vector3(1.3513184, 1.4643555, 3.265564)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_e1yc2"]
+radius = 0.3
+
+[sub_resource type="Resource" id="Resource_yexkw"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "PLAYER"
+line = "Ha! I found them! Those files make you look really bad Mr Boss!"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_qei30"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "UNION"
+line = "Good job!"
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_p8n5g"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "PLAYER"
+line = "Now give me a raise! Or..."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_vyb6o"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "BOSS"
+line = "Hum, you outsmarted me..."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_11cpu"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "BOSS"
+line = "I know a great negotiator when I see one. You broke down my defences with style. That's a useful quality for the company."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_r0vp7"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "BOSS"
+line = "You deserve this raise. And of course, not a word about those little issues. The past is the past. I hope we can continue working together."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
+[sub_resource type="Resource" id="Resource_h6w4s"]
+script = ExtResource("14_p8n5g")
+run_1 = true
+speaker = "UNION"
+line = "Well done, you managed to throw him off balance at just the right moment. We mustn't stop there, one day we'll bring him down for good! But that's enough for today."
+metadata/_custom_type_script = "uid://rrt2j7s4yj5a"
+
 [node name="Office" type="Node3D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_ql6sr")]
-current_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("2_ul364")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.38075, 0.1, 7.7177324)
@@ -279,6 +334,20 @@ script = ExtResource("11_41xxe")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.056274414, 0.23217773, 0.06826782)
 shape = SubResource("BoxShape3D_b6q11")
+
+[node name="WinTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1347632, 0.62000304, 0.60599786)
+script = ExtResource("12_e1yc2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WinTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08355713, 0, -0.10787964)
+shape = SubResource("SphereShape3D_e1yc2")
+
+[node name="WinDialogue" parent="WinTrigger" instance=ExtResource("13_y3s53")]
+dialogue = Array[ExtResource("14_p8n5g")]([SubResource("Resource_yexkw"), SubResource("Resource_qei30"), SubResource("Resource_p8n5g"), SubResource("Resource_vyb6o"), SubResource("Resource_11cpu"), SubResource("Resource_r0vp7"), SubResource("Resource_h6w4s")])
+
+[node name="Callback" type="Node" parent="WinTrigger/WinDialogue"]
+script = ExtResource("15_yexkw")
 
 [connection signal="presence_declared" from="Player" to="Boss" method="_on_player_presence_declared"]
 [connection signal="body_entered" from="Detection Area" to="Detection Area" method="_on_body_entered"]
