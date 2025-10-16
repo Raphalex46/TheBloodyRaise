@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 func _shoot():
 	# Play shooting animation
 	weapon.play(&"shooting")
+	$GunShotSoundEffect.play()
 	
 	# Get ray origin
 	var space_state = get_world_3d().direct_space_state
