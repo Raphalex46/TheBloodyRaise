@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://c4jiair5xyms8"]
+[gd_scene load_steps=39 format=3 uid="uid://c4jiair5xyms8"]
 
 [ext_resource type="Script" uid="uid://chpsdts6p8a5t" path="res://ui/conf_call/conf_call.gd" id="1_0lumt"]
-[ext_resource type="Texture2D" uid="uid://dk6ux8aiesioe" path="res://icon.svg" id="1_gtwgn"]
 [ext_resource type="Texture2D" uid="uid://ohmdrs8exqij" path="res://ui/conf_call/window_buttons.png" id="2_6phgv"]
 [ext_resource type="Texture2D" uid="uid://duloui3u8x8mw" path="res://ui/conf_call/boss_pic.png" id="2_yi3jc"]
 [ext_resource type="Theme" uid="uid://bipmj80ic255m" path="res://ui/themes/dialogue.tres" id="3_eya8e"]
@@ -10,8 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://bov0nxbqsd6o4" path="res://ui/dialogue/dialogue.tscn" id="5_yi3jc"]
 [ext_resource type="Texture2D" uid="uid://cs3rpcgxgsln6" path="res://ui/conf_call/share.png" id="6_685ik"]
 [ext_resource type="Texture2D" uid="uid://dxsygrchpm8dc" path="res://ui/conf_call/end_call.png" id="7_6phgv"]
+[ext_resource type="Texture2D" uid="uid://27yml4px4ldd" path="res://ui/conf_call/close.png" id="9_7tivt"]
+[ext_resource type="Texture2D" uid="uid://bxmfbxtik5qkd" path="res://ui/conf_call/call.png" id="10_7tivt"]
+[ext_resource type="Texture2D" uid="uid://tgnv4l8p5w0u" path="res://ui/conf_call/close_pressed.png" id="10_acevj"]
 [ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="11_7h6mm"]
 [ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="12_32qip"]
+[ext_resource type="Texture2D" uid="uid://bylax0rd7oe5m" path="res://ui/conf_call/call_pressed.png" id="12_ycdvu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12ymn"]
 bg_color = Color(0.1764706, 0.16470589, 0.20392157, 1)
@@ -339,10 +342,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -60.0
-offset_right = 100.0
-offset_bottom = 60.0
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -361,50 +364,36 @@ theme = ExtResource("3_eya8e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseButton" type="Button" parent="ConfCameraPanel/CallPanel"]
+[node name="CloseButton" type="TextureButton" parent="ConfCameraPanel/CallPanel"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -52.359985
-offset_bottom = 52.0
+offset_left = -20.0
+offset_bottom = 20.0
 grow_horizontal = 0
-focus_mode = 0
+texture_normal = ExtResource("9_7tivt")
+texture_pressed = ExtResource("10_acevj")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/CallPanel/CloseButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_gtwgn")
-expand_mode = 1
-
-[node name="CallButton" type="Button" parent="ConfCameraPanel/CallPanel"]
+[node name="CallButton" type="TextureButton" parent="ConfCameraPanel/CallPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.8
 anchor_right = 0.5
 anchor_bottom = 0.8
-offset_left = -26.0
-offset_top = -26.0
-offset_right = 26.0
-offset_bottom = 26.0
+offset_left = -30.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
-
-[node name="TextureRect" type="TextureRect" parent="ConfCameraPanel/CallPanel/CallButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_gtwgn")
-expand_mode = 1
+texture_normal = ExtResource("10_7tivt")
+texture_pressed = ExtResource("12_ycdvu")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ContactList" type="Panel" parent="."]

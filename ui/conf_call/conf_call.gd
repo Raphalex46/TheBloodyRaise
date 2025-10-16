@@ -104,8 +104,8 @@ var contact_names: Array[String] = [
 @onready var contact_container_title: Label = $ContactList/TitlePanel/Label
 @onready var call_panel: Panel = $ConfCameraPanel/CallPanel
 @onready var call_panel_label: Label = $ConfCameraPanel/CallPanel/Label
-@onready var call_panel_close_button: Button = $ConfCameraPanel/CallPanel/CloseButton
-@onready var call_panel_call_button: Button = $ConfCameraPanel/CallPanel/CallButton
+@onready var call_panel_close_button: TextureButton = $ConfCameraPanel/CallPanel/CloseButton
+@onready var call_panel_call_button: TextureButton = $ConfCameraPanel/CallPanel/CallButton
 
 var contact_scene = preload("./contact/contact.tscn")
 var selected_contact: String = ""
