@@ -4,7 +4,7 @@
 
 Ask your boss for a raise and see what happens... Holding your ground against the boss will be difficult, but don't give up! Will you find a way to defeat him?
 
-This game was made for [SCREAM JAM 2025](https://itch.io/jam/scream-jam-2025)
+This game was made for [SCREAM JAM 2025](https://itch.io/jam/scream-jam-2025).
 
 For the best experience, export and run this game in a web browser, or play it directly on [itch.io](https://nawreua.itch.io/the-bloody-raise). The game works best in chromium-based browsers.
 
