@@ -12,7 +12,7 @@ Made with [Godot Engine](https://godotengine.org/).
 
 ## Contributors
 
-- Morgane Schieber (2D assets)
+- Morgane Schieber (2D assets) <https://www.instagram.com/upi.psd>
 - Claire Göller (Writing)
 - Erwan Auer (Programming & 3D assets) <https://nawreua.itch.io/>
 - Raphaël Colin (Programming & Music) <https://raphalex46.github.io/>
