@@ -1,4 +1,4 @@
-- Morgane Schieber (2D assets)
+- Morgane Schieber (2D assets) <https://www.instagram.com/upi.psd>
 - Claire Göller (Writing)
 - [Erwan Auer](https://github.com/Nawreua) (Programming & 3D assets) <https://nawreua.itch.io/>
 - [Raphaël Colin](https://github.com/Raphalex46) (Programming & Music) <https://raphalex46.github.io/>
