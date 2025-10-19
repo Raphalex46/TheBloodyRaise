@@ -65,6 +65,9 @@ Font:  VCR_OSD_MONO by mrmanet ([url]https://www.1001freefonts.com/vcr-osd-mono.
 Boss monster, gun and player sound effects: Survival I by Darkworld Audio[/ul]
 [ul bullet=]
 ([url]https://darkworldaudio.itch.io/sound-effects-survival-i[/url])
+[/ul]
+[ul]
+DrumGizmo Aasimonster drumkit ([url]https://www.drumgizmo.org/wiki/doku.php?id=kits:the_aasimonster[/url]])
 [/ul]"
 script = SubResource("GDScript_c8xcy")
 
