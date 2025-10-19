@@ -23,6 +23,7 @@ Also, see [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
 - VCR_OSD_MONO by mrmanet (<https://www.1001freefonts.com/vcr-osd-mono.font>)
 - Sounds Effects - Survival I by Darkworld Audio (<https://darkworldaudio.itch.io/sound-effects-survival-i>)
+- DrumGizmo Aasimonster drumkit (<https://www.drumgizmo.org/wiki/doku.php?id=kits:the_aasimonster>)
 
 Also, see [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
 
