@@ -134,16 +134,17 @@ func _on_call_panel_close_pressed() -> void:
 
 func _on_call_panel_call_pressed() -> void:
 	if not DialogueController.is_playing():
+		var contact_to_call = selected_contact
 		call_panel.hide()
 		ring_sound_effect.play()
 		await ring_sound_effect.finished
-		if selected_contact == "Boss":
+		if contact_to_call == "Boss":
 			if _boss_union_call():
 				anim_player.play("FadeInBossUnion")
 			else:
 				anim_player.play("FadeInBoss")
 			anim_player.animation_finished.connect(_on_boss_called, CONNECT_ONE_SHOT)
-		elif selected_contact == "Luiz Guinn":
+		elif contact_to_call == "Luiz Guinn":
 			anim_player.play("FadeInUnion")
 			anim_player.animation_finished.connect(_on_union_called, CONNECT_ONE_SHOT)
 		else:
