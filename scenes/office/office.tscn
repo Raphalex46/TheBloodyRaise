@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bd72q7axcpr7m"]
+[gd_scene load_steps=40 format=3 uid="uid://bd72q7axcpr7m"]
 
 [ext_resource type="PackedScene" uid="uid://tk0n1i5iben6" path="res://ui/hud/hud.tscn" id="1_ql6sr"]
 [ext_resource type="Texture2D" uid="uid://wa6vbqiokghf" path="res://textures/floor_texture.jpg" id="2_llti7"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://brmo4pl84byk8" path="res://utilities/dialogue_holder/dialogue_holder.tscn" id="13_y3s53"]
 [ext_resource type="Script" uid="uid://rrt2j7s4yj5a" path="res://resources/dialogue/save_path_dialogue_line/save_path_dialogue_line.gd" id="14_p8n5g"]
 [ext_resource type="Script" uid="uid://1el3k4k7hwkc" path="res://scenes/office/callback.gd" id="15_yexkw"]
+[ext_resource type="Script" uid="uid://bit54ai80bgem" path="res://scenes/office/tooltip.gd" id="16_qei30"]
+[ext_resource type="FontFile" uid="uid://l1pv5jrv71g0" path="res://ui/dialogue/EXT_VCR_OSD_MONO.ttf" id="16_vyb6o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_art4y"]
 albedo_texture = ExtResource("5_66du1")
@@ -349,6 +351,14 @@ dialogue = Array[ExtResource("14_p8n5g")]([SubResource("Resource_yexkw"), SubRes
 
 [node name="Callback" type="Node" parent="WinTrigger/WinDialogue"]
 script = ExtResource("15_yexkw")
+
+[node name="Tooltip" type="Label3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.846104, 2, 7.6148977)
+billboard = 1
+double_sided = false
+text = "Sample text"
+font = ExtResource("16_vyb6o")
+script = ExtResource("16_qei30")
 
 [connection signal="presence_declared" from="Player" to="Boss" method="_on_player_presence_declared"]
 [connection signal="body_entered" from="Detection Area" to="Detection Area" method="_on_body_entered"]
